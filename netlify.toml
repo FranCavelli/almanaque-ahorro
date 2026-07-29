@@ -1,0 +1,36 @@
+[build]
+  publish = "web"
+  command = "node scripts/build.mjs"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# El shell puede cachearse fuerte: el service worker lo versiona.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# promos.json cambia dos veces por día: que revalide siempre.
+[[headers]]
+  for = "/promos.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# El service worker nunca se cachea, o la app se queda vieja para siempre.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"

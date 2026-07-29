@@ -1,0 +1,120 @@
+<!doctype html>
+<!--
+  ALMANAQUE — contrato de dirección
+
+  THESIS: Un almanaque de pared, no un panel de fintech. Refuta la grilla de
+  tarjetas con el porcentaje en un círculo de color: acá el número más grande
+  de cada promo es el TOPE, porque el tope es el ahorro que realmente existe.
+
+  OWN-WORLD: Impresión a dos tintas sobre papel gris-cálido — cobalto #1B3FA8
+  en bandas y riel, rojo de calendario #D8232A para domingo, hoy y tope. Radio
+  cero, reglas de 1px, perforado troquelado, sombra dura sin blur. Archivo
+  (Omnibus-Type, Buenos Aires) comprimida y pesada para los numerales.
+
+  STORY: Entra, ve el día de hoy y el techo de ahorro. Marca sus tarjetas una
+  vez. Vuelve cada vez que va al súper y decide en un vistazo.
+
+  FIRST VIEWPORT: Banda de mes sticky arriba con sello de verificación.
+  Perforado. Nombre del día y numeral gigante de la fecha. Debajo, la promo de
+  mayor tope. Riel de 7 días fijo abajo, en la zona del pulgar.
+
+  FORM: Almanaque de pared argentino — 5º de mi lista ordenada por resonancia,
+  staging "riel perimetral" (la semana es el riel, el día es el piso).
+  Seed key: abd15a2f.
+-->
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Almanaque del Ahorro — descuentos de súper</title>
+<meta name="description" content="Qué descuento de supermercado conviene hoy en AMBA, con las tarjetas que tenés.">
+<meta name="theme-color" content="#1B3FA8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161C" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ══════════ LA HOJA ══════════ -->
+<div class="hoja">
+
+  <!-- Banda de mes -->
+  <header class="banda-mes">
+    <h1 class="marca">
+      <span class="marca__nombre">Almanaque</span>
+      <span class="marca__nombre marca__nombre--2">del Ahorro</span>
+      <span class="marca__bajada">descuentos de súper · amba</span>
+    </h1>
+    <div class="banda-mes__derecha">
+      <button class="sello" id="sello" type="button" aria-live="polite">
+        <span class="sello__punto" aria-hidden="true"></span>
+        <span class="sello__texto" id="selloTexto">cargando</span>
+      </button>
+      <button class="btn-cartera" id="abrirCartera" type="button" aria-haspopup="dialog">
+        <span class="btn-cartera__n" id="carteraN">0</span>
+        <span class="btn-cartera__l">mi cartera</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Perforado -->
+  <div class="perforado" aria-hidden="true">
+    <span class="perforado__ojal"></span>
+    <span class="perforado__linea"></span>
+    <span class="perforado__ojal"></span>
+  </div>
+
+  <!-- Piso: el día -->
+  <main class="piso" id="piso">
+
+    <div class="fecha" id="fecha">
+      <p class="fecha__nombre" id="fechaNombre">Miércoles</p>
+      <div class="fecha__bloque">
+        <span class="fecha__num" id="fechaNum">29</span>
+        <span class="fecha__mes" id="fechaMes">jul</span>
+      </div>
+      <p class="fecha__rel" id="fechaRel">hoy</p>
+    </div>
+
+    <section class="listado" id="listado" aria-live="polite" aria-busy="true">
+      <p class="cargando">Abriendo el almanaque…</p>
+    </section>
+
+  </main>
+
+  <!-- Banda de aviso: el resumen del día -->
+  <aside class="banda-aviso" id="bandaAviso" hidden>
+    <span class="banda-aviso__l" id="bandaLabel">Techo de ahorro del día</span>
+    <strong class="banda-aviso__v" id="techoDia">—</strong>
+    <span class="banda-aviso__n" id="techoNota"></span>
+  </aside>
+
+</div>
+
+<!-- ══════════ EL RIEL: la semana ══════════ -->
+<nav class="riel" id="riel" aria-label="Días de la semana"></nav>
+
+<!-- ══════════ CARTERA ══════════ -->
+<div class="telon" id="telon" hidden></div>
+
+<section class="cartera" id="cartera" role="dialog" aria-modal="true" aria-labelledby="carteraTitulo" hidden>
+  <div class="cartera__agarre" aria-hidden="true"></div>
+  <header class="cartera__cab">
+    <h2 id="carteraTitulo">¿Qué tenés en la billetera?</h2>
+    <p>Marcá lo tuyo. Lo demás se imprime en gris, pero no desaparece.</p>
+  </header>
+  <div class="cartera__lista" id="carteraLista"></div>
+  <footer class="cartera__pie">
+    <button class="btn-fantasma" id="carteraNada" type="button">Mostrar todo</button>
+    <button class="btn-solido" id="carteraListo" type="button">Listo</button>
+  </footer>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "_comentario": [
+    "Correcciones manuales. Mandan por encima de lo que extraiga el modelo.",
+    "",
+    "reemplazar: lista de objetos parciales. El campo `id` identifica la promo",
+    "  (lo ves corriendo `npm run build`, o en web/promos.json). El resto de los",
+    "  campos que pongas pisan a los del modelo. Los que omitas se conservan.",
+    "",
+    "ocultar: lista de ids que no querés publicar, pase lo que pase.",
+    "",
+    "Ejemplo:",
+    "  \"reemplazar\": [{ \"id\": \"banco-nacion_supermercados-adheridos_3_30_x\", \"tope_monto\": 12000 }],",
+    "  \"ocultar\": [\"mi-carrefour_carrefour_123_10_35000\"]"
+  ],
+  "reemplazar": [],
+  "ocultar": []
+}

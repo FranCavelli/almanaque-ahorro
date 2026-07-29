@@ -1,0 +1,9 @@
+node_modules/
+.shots/
+.env
+.env.local
+.DS_Store
+Thumbs.db
+
+# El texto crudo de cada scrapeo es efímero y pesa: se regenera con `npm run scrape`.
+data/raw/*.txt

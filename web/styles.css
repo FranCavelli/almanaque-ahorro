@@ -1,0 +1,734 @@
+/* ═══════════════════════════════════════════════════════════════
+   ALMANAQUE — impresión a dos tintas sobre papel.
+   Ver DESIGN.md. Reglas duras: radio cero, sin sombras difusas,
+   sin gradientes, los domingos en rojo, el tope siempre visible.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Archivo — Omnibus-Type (Buenos Aires). Variable: peso 100-900, ancho 62-125. */
+@font-face {
+  font-family: 'Archivo';
+  src: url('fonts/archivo-latin.woff2') format('woff2');
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Archivo';
+  src: url('fonts/archivo-latinext.woff2') format('woff2');
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --papel: #F2F0EA;
+  --papel-borde: #DFDCD2;
+  --papel-hueco: #E7E4DC;
+  --tinta: #14161C;
+  --tinta-suave: #5A5F6B;
+  --cobalto: #1B3FA8;
+  --cobalto-hondo: #132C77;
+  --rojo: #D8232A;
+  --rojo-hondo: #A5161C;
+  --verde-sello: #0F6B4A;
+  --amarillo-perf: #E8C33E;
+
+  /* Rampa tipografica. Todo font-size del proyecto sale de aca. */
+  --t-3xs: 0.5rem;
+  --t-2xs: 0.5625rem;
+  --t-xs: 0.625rem;
+  --t-sm: 0.75rem;
+  --t-md: 0.8125rem;
+  --t-base: 0.9375rem;
+  --t-lg: 1.0625rem;
+  --t-xl: 1.1875rem;
+  --t-2xl: 1.5rem;
+  --t-3xl: 1.75rem;
+  --t-4xl: 3rem;
+  --t-dia: clamp(3.5rem, 19vw, 6rem);
+
+  /* Reglas de 1px sobre campo cobalto. */
+  --regla-sobre-cobalto: rgba(255 255 255 / 0.34);
+  --regla-riel: rgba(255 255 255 / 0.15);
+
+  /* Tintas fijas: no se invierten nunca. El cobalto es el mismo azul en
+     ambos modos, asi que lo que va encima tiene que quedarse claro. */
+  --sobre-cobalto: #F2F0EA;
+  --chrome-activo-bg: #F2F0EA;
+  --chrome-activo-fg: #132C77;
+
+  --riel-alto: 68px;
+  --hair: 1px;
+  --tipo: 'Archivo', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --papel: #14161C;
+    --papel-borde: #2C3038;
+    --papel-hueco: #1D2027;
+    --tinta: #E8E5DD;
+    --tinta-suave: #9AA0AC;
+    --cobalto: #2E56C8;
+    --cobalto-hondo: #1B3FA8;
+    --rojo: #FF4A50;
+    --rojo-hondo: #D8232A;
+    --verde-sello: #2FAE7D;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Un `display` de clase le gana al atributo `hidden` del UA stylesheet.
+   Como acá lo usamos para mostrar/ocultar de verdad, tiene que mandar. */
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--papel-hueco);
+  color: var(--tinta);
+  font-family: var(--tipo);
+  font-size: var(--t-base);
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+  padding-bottom: calc(var(--riel-alto) + env(safe-area-inset-bottom));
+  overscroll-behavior-y: none;
+}
+
+h1, h2, h3, p, figure { margin: 0; }
+button { font: inherit; color: inherit; }
+
+::selection { background: var(--rojo); color: var(--papel); }
+
+:focus-visible {
+  outline: 3px solid var(--rojo);
+  outline-offset: 2px;
+}
+
+/* ─────────── LA HOJA ─────────── */
+
+.hoja {
+  max-width: 560px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  background: var(--papel);
+  border-inline: var(--hair) solid var(--papel-borde);
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 600px) {
+  .hoja {
+    margin-block: 20px;
+    min-height: calc(100dvh - 40px);
+    /* Sombra dura, sin blur: hoja levantada del papel de abajo. */
+    box-shadow: 5px 5px 0 var(--papel-borde);
+  }
+}
+
+/* ─────────── BANDA DE MES ─────────── */
+
+.banda-mes {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--cobalto);
+  color: var(--sobre-cobalto);
+  padding: 10px 14px calc(10px + env(safe-area-inset-top)) 14px;
+  padding-top: calc(10px + env(safe-area-inset-top));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Lockup de dos líneas, como la cabecera de un almanaque impreso:
+   la segunda línea se estira para alinear con la primera. */
+.marca { display: flex; flex-direction: column; line-height: 0.92; }
+.marca__nombre {
+  font-size: var(--t-lg);
+  font-weight: 900;
+  font-stretch: 84%;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+}
+.marca__nombre--2 {
+  font-stretch: 100%;
+  letter-spacing: 0.135em;
+  font-size: var(--t-md);
+  font-weight: 800;
+}
+.marca__bajada {
+  font-size: var(--t-3xs);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.banda-mes__derecha { display: flex; align-items: stretch; gap: 8px; }
+
+/* Sello de verificación */
+.sello {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: var(--hair) solid var(--regla-sobre-cobalto);
+  border-radius: 0;
+  padding: 5px 7px;
+  cursor: pointer;
+  min-height: 34px;
+}
+.sello__punto {
+  width: 7px; height: 7px;
+  background: var(--verde-sello);
+  flex: none;
+}
+.sello[data-viejo="si"] .sello__punto { background: var(--rojo); }
+.sello__texto {
+  font-size: var(--t-2xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Botón cartera */
+.btn-cartera {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  background: var(--chrome-activo-bg);
+  color: var(--chrome-activo-fg);
+  border: none;
+  border-radius: 0;
+  padding: 4px 9px;
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 48px;
+}
+.btn-cartera__n { font-size: var(--t-lg); font-weight: 900; line-height: 1; }
+.btn-cartera__l {
+  font-size: var(--t-3xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─────────── PERFORADO ─────────── */
+
+.perforado {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 22px;
+  background: var(--papel);
+}
+.perforado__ojal {
+  width: 13px; height: 13px;
+  border-radius: 999px;
+  background: var(--papel-hueco);
+  border: var(--hair) solid var(--papel-borde);
+  flex: none;
+}
+.perforado__linea {
+  flex: 1;
+  height: 2px;
+  /* Perforación real: guión y espacio controlados, no border-dashed. */
+  background: repeating-linear-gradient(
+    to right,
+    var(--papel-borde) 0 7px,
+    transparent 7px 13px
+  );
+}
+
+/* ─────────── EL PISO ─────────── */
+
+.piso {
+  flex: 1;
+  /* El fondo deja aire para que la última promo no quede debajo de la banda. */
+  padding: 4px 14px 76px;
+  animation: pasar-hoja 0.18s ease-out;
+}
+
+@keyframes pasar-hoja {
+  from { opacity: 0; transform: translateY(7px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .piso { animation: none; }
+}
+
+/* Fecha */
+.fecha {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  column-gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--tinta);
+}
+.fecha__nombre {
+  grid-column: 1;
+  font-size: var(--t-xl);
+  font-weight: 800;
+  font-stretch: 88%;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1;
+  align-self: end;
+  margin-bottom: 6px;
+}
+.fecha__rel {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.fecha[data-hoy="si"] .fecha__rel { color: var(--rojo); }
+.fecha[data-domingo="si"] .fecha__nombre { color: var(--rojo); }
+
+.fecha__bloque {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+.fecha__num {
+  font-size: var(--t-dia);
+  font-weight: 900;
+  font-stretch: 78%;
+  letter-spacing: -0.05em;
+  line-height: 0.76;
+}
+.fecha[data-domingo="si"] .fecha__num { color: var(--rojo); }
+.fecha__mes {
+  font-size: var(--t-sm);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+/* ─────────── LISTADO ─────────── */
+
+.listado { display: flex; flex-direction: column; }
+
+.cargando, .vacio {
+  padding: 40px 0;
+  color: var(--tinta-suave);
+  text-align: center;
+}
+
+.vacio__num {
+  display: block;
+  font-size: var(--t-4xl);
+  font-weight: 900;
+  font-stretch: 78%;
+  color: var(--papel-borde);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.vacio strong { color: var(--tinta); font-weight: 800; }
+
+/* Rótulo de sección impreso */
+.rotulo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 26px 0 2px;
+  font-size: var(--t-xs);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+.rotulo::after {
+  content: '';
+  flex: 1;
+  height: var(--hair);
+  background: var(--papel-borde);
+}
+
+/* ─────────── PROMO ─────────── */
+
+.promo {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 14px;
+  padding: 15px 0;
+  border-bottom: var(--hair) solid var(--papel-borde);
+}
+
+.promo__comercio {
+  grid-column: 1;
+  font-size: var(--t-xl);
+  font-weight: 800;
+  font-stretch: 90%;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.promo__banco {
+  grid-column: 1;
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-top: 4px;
+}
+
+/* El tope: el número más grande de la tarjeta. */
+.promo__tope {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  text-align: right;
+  align-self: start;
+  line-height: 0.85;
+}
+.promo__tope-cifra {
+  display: block;
+  font-size: var(--t-3xl);
+  font-weight: 900;
+  font-stretch: 78%;
+  letter-spacing: -0.035em;
+  color: var(--rojo);
+  white-space: nowrap;
+}
+.promo__tope-cifra[data-sintope="si"] { font-size: var(--t-xl); letter-spacing: 0.01em; }
+.promo__tope-l {
+  display: block;
+  font-size: var(--t-3xs);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-top: 5px;
+}
+
+.promo__datos {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+.dato {
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 4px 7px;
+  border: var(--hair) solid var(--papel-borde);
+  color: var(--tinta-suave);
+}
+.dato--pct {
+  background: var(--tinta);
+  color: var(--papel);
+  border-color: var(--tinta);
+}
+.dato--cuotas {
+  background: var(--cobalto);
+  color: var(--papel);
+  border-color: var(--cobalto);
+}
+
+.promo__req {
+  grid-column: 1 / -1;
+  margin-top: 9px;
+  color: var(--tinta-suave);
+  font-size: var(--t-md);
+  line-height: 1.4;
+}
+
+.promo__pie {
+  grid-column: 1 / -1;
+  margin-top: 9px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--t-xs);
+  color: var(--tinta-suave);
+}
+.promo__fuente {
+  color: var(--tinta-suave);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+}
+.promo__dudosa {
+  border: var(--hair) solid var(--rojo);
+  color: var(--rojo);
+  padding: 2px 5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: var(--t-3xs);
+}
+
+/* Promo que el usuario no puede usar: se imprime en gris, no se borra. */
+.promo--ajena .promo__comercio { color: var(--tinta-suave); font-weight: 700; }
+.promo--ajena .promo__tope-cifra { color: var(--tinta-suave); font-size: var(--t-xl); }
+.promo--ajena .dato--pct,
+.promo--ajena .dato--cuotas {
+  background: none;
+  color: var(--tinta-suave);
+  border-color: var(--papel-borde);
+}
+
+/* ─────────── BANDA DE AVISO ─────────── */
+
+.banda-aviso {
+  position: sticky;
+  /* Se apoya justo arriba del riel, que es fixed y le taparía el lugar. */
+  bottom: calc(var(--riel-alto) + env(safe-area-inset-bottom));
+  z-index: 15;
+  background: var(--cobalto);
+  color: var(--sobre-cobalto);
+  padding: 11px 14px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 12px;
+}
+.banda-aviso__l {
+  font-size: var(--t-2xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+.banda-aviso__v {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  font-size: var(--t-2xl);
+  font-weight: 900;
+  font-stretch: 78%;
+  letter-spacing: -0.03em;
+  align-self: center;
+  white-space: nowrap;
+}
+.banda-aviso__n {
+  grid-column: 1;
+  font-size: var(--t-xs);
+  opacity: 0.8;
+  line-height: 1.3;
+}
+
+/* ─────────── EL RIEL ─────────── */
+
+.riel {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: var(--cobalto-hondo);
+  padding-bottom: env(safe-area-inset-bottom);
+  border-top: 2px solid var(--tinta);
+}
+@media (min-width: 600px) {
+  .riel {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+}
+
+.riel__dia {
+  position: relative;
+  appearance: none;
+  background: none;
+  border: none;
+  border-left: var(--hair) solid var(--regla-riel);
+  border-radius: 0;
+  color: var(--sobre-cobalto);
+  height: var(--riel-alto);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.12s;
+}
+.riel__dia:first-child { border-left: none; }
+
+.riel__letra {
+  font-size: var(--t-xs);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.riel__n {
+  font-size: var(--t-lg);
+  font-weight: 900;
+  font-stretch: 78%;
+  line-height: 1;
+}
+.riel__cero { opacity: 0.4; }
+
+/* Los domingos van en rojo. */
+.riel__dia[data-domingo="si"] .riel__letra { color: var(--rojo); }
+
+/* Hoy lleva un punto rojo, esté activo o no. */
+.riel__dia[data-hoy="si"]::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  width: 5px; height: 5px;
+  background: var(--rojo);
+}
+
+/* Día activo: se invierte, papel sobre cobalto. */
+.riel__dia[aria-current="true"] {
+  background: var(--chrome-activo-bg);
+  color: var(--chrome-activo-fg);
+}
+.riel__dia[aria-current="true"][data-domingo="si"] .riel__letra { color: var(--rojo-hondo); }
+.riel__dia[aria-current="true"]::after { background: var(--rojo); }
+
+/* Un día sin promas no se oculta: la ausencia también es información. */
+.riel__dia[data-vacio="si"] { opacity: 0.42; }
+.riel__dia[data-vacio="si"][aria-current="true"] { opacity: 1; }
+
+/* ─────────── CARTERA ─────────── */
+
+.telon {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgb(20 22 28 / 0.55);
+  animation: aparecer 0.15s ease-out;
+}
+@keyframes aparecer { from { opacity: 0 } to { opacity: 1 } }
+
+.cartera {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 50;
+  max-width: 560px;
+  margin: 0 auto;
+  max-height: 88dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--papel);
+  border-top: 3px solid var(--tinta);
+  animation: subir 0.2s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+@keyframes subir { from { transform: translateY(100%) } to { transform: none } }
+@media (prefers-reduced-motion: reduce) {
+  .telon, .cartera { animation: none; }
+}
+
+.cartera__agarre {
+  width: 42px; height: 4px;
+  background: var(--papel-borde);
+  margin: 9px auto 0;
+}
+
+.cartera__cab { padding: 12px 16px 14px; }
+.cartera__cab h2 {
+  font-size: var(--t-xl);
+  font-weight: 800;
+  font-stretch: 90%;
+  letter-spacing: -0.015em;
+}
+.cartera__cab p {
+  margin-top: 5px;
+  color: var(--tinta-suave);
+  font-size: var(--t-md);
+}
+
+.cartera__lista {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 8px;
+  align-content: start;
+}
+
+/* Casilla de formulario impreso, no un pill. */
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 12px;
+  min-height: 48px;
+  background: var(--papel);
+  color: var(--tinta);
+  border: 2px solid var(--tinta);
+  border-radius: 0;
+  cursor: pointer;
+  text-align: left;
+  font-size: var(--t-md);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.chip__caja {
+  width: 15px; height: 15px;
+  border: 2px solid currentColor;
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+.chip__caja::after { content: ''; width: 7px; height: 7px; background: transparent; }
+.chip[aria-pressed="true"] { background: var(--tinta); color: var(--papel); }
+.chip[aria-pressed="true"] .chip__caja::after { background: var(--papel); }
+.chip__n {
+  margin-left: auto;
+  font-size: var(--t-xs);
+  font-weight: 800;
+  opacity: 0.6;
+}
+
+.cartera__pie {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  border-top: var(--hair) solid var(--papel-borde);
+}
+
+.btn-solido, .btn-fantasma {
+  flex: 1;
+  min-height: 50px;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: var(--t-sm);
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.btn-solido {
+  background: var(--tinta);
+  color: var(--papel);
+  border: 2px solid var(--tinta);
+  flex: 1.6;
+}
+.btn-fantasma {
+  background: none;
+  color: var(--tinta);
+  border: 2px solid var(--papel-borde);
+}

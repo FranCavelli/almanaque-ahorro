@@ -1,0 +1,20 @@
+{
+  "name": "promos-ar",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Pipeline de scraping + normalizacion con Claude de promociones bancarias en supermercados (AR), y PWA mobile-first para consultarlas dia a dia.",
+  "author": "Fran4All",
+  "scripts": {
+    "scrape": "node scripts/scrape.mjs",
+    "normalize": "node scripts/normalize.mjs",
+    "build": "node scripts/build.mjs",
+    "pipeline": "npm run scrape && npm run normalize && npm run build",
+    "serve": "node scripts/serve.mjs",
+    "postinstall": "playwright install chromium"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.0",
+    "playwright": "^1.50.0"
+  }
+}
