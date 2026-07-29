@@ -1,9 +1,12 @@
 # Almanaque del Ahorro
 
+**→ [francavelli.github.io/almanaque-ahorro](https://francavelli.github.io/almanaque-ahorro/)**
+
 Qué descuento de supermercado conviene hoy en AMBA, con las tarjetas que tenés.
 
 PWA mobile-first alimentada por un pipeline propio de scraping + normalización
-con Claude sobre ~25 fuentes (bancos, billeteras, cadenas de súper y mayoristas).
+con LLM sobre ~25 fuentes (bancos, billeteras, cadenas de súper y mayoristas).
+Se instala desde el navegador y funciona sin señal.
 
 ---
 
@@ -28,7 +31,7 @@ renovación. Por eso la etapa 2 es un modelo con **JSON Schema forzado**.
 
 ```
 scrape ──▶ data/raw/*.txt ──▶ normalize ──▶ data/normalized/*.json ──┐
- Playwright   texto plano       Claude API      promos estructuradas  │
+ Playwright   texto plano      LLM + schema     promos estructuradas  │
  (SPAs)                       schema forzado                          │
                                                                       ▼
                               data/seed.json ────────────────────▶ build
@@ -102,13 +105,30 @@ Los `id` salen de `web/promos.json` o de la salida de `npm run build`.
 `data/seed.json` es la base verificada a mano que se usa mientras el pipeline
 no corrió todavía.
 
-## Automatización
+## Automatización y costo
 
-`.github/workflows/actualizar.yml` corre a las 06:00 y 18:00 (hora de Argentina),
+`.github/workflows/actualizar.yml` corre a las 06:00 (hora de Argentina),
 publica `web/promos.json` y lo comitea si cambió. Si salen menos de 5 promos
-aborta sin comitear, para que un scrapeo roto no vacíe la app.
+aborta sin comitear, para que un scrapeo roto no vacíe la app. Después,
+`pages.yml` republica el sitio.
 
 Requiere el secret `ANTHROPIC_API_KEY` en el repo.
+
+**El scraping es gratis; lo que se paga es la normalización.** Como las promos
+se renuevan el día 1 de cada mes, re-analizar 23 fuentes idénticas todos los
+días sería gasto puro. Por eso el normalizador guarda una huella SHA-256 del
+texto crudo de cada fuente y solo consulta al modelo por las que cambiaron:
+
+| Corrida | Fuentes consultadas | Costo |
+|---|---|---|
+| Primera (todo nuevo) | 23 | USD 0,70 |
+| Siguiente, mismo texto | 0 | USD 0,00 |
+
+El gasto queda concentrado en el día 1. Con corrida diaria da del orden de
+**USD 1 a 3 por mes**. Cada corrida imprime su costo estimado al terminar.
+
+`node scripts/normalize.mjs --todo` ignora las huellas y re-normaliza entero
+(hace falta cuando cambia el prompt o el esquema).
 
 ## Diseño
 

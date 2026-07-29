@@ -1,5 +1,5 @@
 {
-  "generado": "2026-07-29T15:43:50.440Z",
+  "generado": "2026-07-29T16:07:52.178Z",
   "fuentes": [
     {
       "id": "carrefour",
@@ -7,10 +7,10 @@
       "url": "https://www.carrefour.com.ar/promociones-bancarias",
       "mode": "browser",
       "status": 200,
-      "chars": 24031,
-      "thin": false,
-      "ok": true,
-      "ms": 18407,
+      "chars": 734,
+      "thin": true,
+      "ok": false,
+      "ms": 17378,
       "error": null
     },
     {
@@ -22,7 +22,7 @@
       "chars": 15016,
       "thin": false,
       "ok": true,
-      "ms": 14222,
+      "ms": 10991,
       "error": null
     },
     {
@@ -34,7 +34,7 @@
       "chars": 12158,
       "thin": false,
       "ok": true,
-      "ms": 14733,
+      "ms": 11538,
       "error": null
     },
     {
@@ -46,7 +46,7 @@
       "chars": 12349,
       "thin": false,
       "ok": true,
-      "ms": 12128,
+      "ms": 12097,
       "error": null
     },
     {
@@ -58,7 +58,7 @@
       "chars": 19527,
       "thin": false,
       "ok": true,
-      "ms": 12627,
+      "ms": 12505,
       "error": null
     },
     {
@@ -70,7 +70,235 @@
       "chars": 13766,
       "thin": false,
       "ok": true,
-      "ms": 15024,
+      "ms": 24080,
+      "error": null
+    },
+    {
+      "id": "promoarg",
+      "label": "PromoArg",
+      "url": "https://www.promoarg.com/promociones",
+      "mode": "browser",
+      "status": 200,
+      "chars": 11097,
+      "thin": false,
+      "ok": true,
+      "ms": 18456,
+      "error": null
+    },
+    {
+      "id": "promociones-super",
+      "label": "Promociones.com.ar — Supermercados",
+      "url": "https://www.promociones.com.ar/categoria/supermercados/",
+      "mode": "fetch",
+      "status": 200,
+      "chars": 6803,
+      "thin": false,
+      "ok": true,
+      "ms": 1825,
+      "error": null
+    },
+    {
+      "id": "jumbo",
+      "label": "Jumbo",
+      "url": "https://www.jumbo.com.ar/promociones-bancarias",
+      "mode": "browser",
+      "status": 200,
+      "chars": 2615,
+      "thin": false,
+      "ok": true,
+      "ms": 14398,
+      "error": null
+    },
+    {
+      "id": "disco",
+      "label": "Disco",
+      "url": "https://www.disco.com.ar/promociones-bancarias",
+      "mode": "browser",
+      "status": 200,
+      "chars": 2496,
+      "thin": false,
+      "ok": true,
+      "ms": 12917,
+      "error": null
+    },
+    {
+      "id": "vea",
+      "label": "Vea",
+      "url": "https://www.vea.com.ar/promociones-bancarias",
+      "mode": "browser",
+      "status": 200,
+      "chars": 2616,
+      "thin": false,
+      "ok": true,
+      "ms": 12931,
+      "error": null
+    },
+    {
+      "id": "dia",
+      "label": "Supermercados DIA",
+      "url": "https://diaonline.supermercadosdia.com.ar/promociones-bancarias",
+      "mode": "browser",
+      "status": 200,
+      "chars": 1329,
+      "thin": false,
+      "ok": true,
+      "ms": 12240,
+      "error": null
+    },
+    {
+      "id": "laanonima",
+      "label": "La Anónima",
+      "url": "https://supermercado.laanonimaonline.com/promociones",
+      "mode": "browser",
+      "status": 200,
+      "chars": 15005,
+      "thin": false,
+      "ok": true,
+      "ms": 12913,
+      "error": null
+    },
+    {
+      "id": "libertad",
+      "label": "Hiperlibertad",
+      "url": "https://www.hiperlibertad.com.ar/",
+      "mode": "browser",
+      "status": 200,
+      "chars": 1327,
+      "thin": false,
+      "ok": true,
+      "ms": 11225,
+      "error": null
+    },
+    {
+      "id": "toledo",
+      "label": "Toledo",
+      "url": "https://www.toledodigital.com.ar/promociones-bancarias",
+      "mode": "browser",
+      "status": 200,
+      "chars": 2305,
+      "thin": false,
+      "ok": true,
+      "ms": 12926,
+      "error": null
+    },
+    {
+      "id": "maxiconsumo",
+      "label": "Maxiconsumo",
+      "url": "https://www.maxiconsumo.com/promociones",
+      "mode": "browser",
+      "status": 200,
+      "chars": 9956,
+      "thin": false,
+      "ok": true,
+      "ms": 11431,
+      "error": null
+    },
+    {
+      "id": "vital",
+      "label": "Vital",
+      "url": "https://www.vital.com.ar/",
+      "mode": "browser",
+      "status": 200,
+      "chars": 1266,
+      "thin": false,
+      "ok": true,
+      "ms": 11518,
+      "error": null
+    },
+    {
+      "id": "bna",
+      "label": "Banco Nación — Supermercados y mayoristas",
+      "url": "https://bna.com.ar/Personas/DescuentosYPromociones/4431/supermercados-y-mayoristas/",
+      "mode": "fetch",
+      "status": 200,
+      "chars": 5705,
+      "thin": false,
+      "ok": true,
+      "ms": 565,
+      "error": null
+    },
+    {
+      "id": "cuentadni",
+      "label": "Cuenta DNI — Beneficios",
+      "url": "https://www.bancoprovincia.com.ar/Principal/CuentaDNI",
+      "mode": "browser",
+      "status": 200,
+      "chars": 341,
+      "thin": true,
+      "ok": false,
+      "ms": 10748,
+      "error": null
+    },
+    {
+      "id": "galicia",
+      "label": "Galicia — Beneficios",
+      "url": "https://www.galicia.ar/personas/promociones",
+      "mode": "browser",
+      "status": 200,
+      "chars": 5124,
+      "thin": false,
+      "ok": true,
+      "ms": 10842,
+      "error": null
+    },
+    {
+      "id": "santander",
+      "label": "Santander — Beneficios",
+      "url": "https://www.santander.com.ar/personas/beneficios",
+      "mode": "browser",
+      "status": 0,
+      "chars": 0,
+      "thin": true,
+      "ok": false,
+      "ms": 60085,
+      "error": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://www.santander.com.ar/personas/beneficios\", waiting until \"commit\"\u001b[22m\n"
+    },
+    {
+      "id": "macro",
+      "label": "Banco Macro — Beneficios",
+      "url": "https://www.macro.com.ar/beneficios",
+      "mode": "browser",
+      "status": 200,
+      "chars": 7320,
+      "thin": false,
+      "ok": true,
+      "ms": 16353,
+      "error": null
+    },
+    {
+      "id": "credicoop",
+      "label": "Credicoop — Beneficios",
+      "url": "https://www.bancocredicoop.coop/beneficios",
+      "mode": "browser",
+      "status": 200,
+      "chars": 5351,
+      "thin": false,
+      "ok": true,
+      "ms": 12899,
+      "error": null
+    },
+    {
+      "id": "mercadopago",
+      "label": "Mercado Pago — Promociones",
+      "url": "https://www.mercadopago.com.ar/promociones",
+      "mode": "browser",
+      "status": 200,
+      "chars": 3877,
+      "thin": false,
+      "ok": true,
+      "ms": 11475,
+      "error": null
+    },
+    {
+      "id": "modo",
+      "label": "MODO — Promociones",
+      "url": "https://www.modo.com.ar/promos",
+      "mode": "browser",
+      "status": 200,
+      "chars": 1688,
+      "thin": false,
+      "ok": true,
+      "ms": 11325,
       "error": null
     }
   ]
