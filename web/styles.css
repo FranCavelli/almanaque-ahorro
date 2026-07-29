@@ -471,9 +471,12 @@ button { font: inherit; color: inherit; }
   color: var(--tinta-suave);
   text-decoration: underline;
   text-underline-offset: 2px;
-  min-height: 24px;
   display: inline-flex;
   align-items: center;
+  /* El área táctil crece a 44px sin correr el layout: el padding se compensa
+     con el margen negativo. Se toca caminando y con una mano. */
+  padding: 15px 10px;
+  margin: -15px -10px;
 }
 .promo__dudosa {
   border: var(--hair) solid var(--rojo);
