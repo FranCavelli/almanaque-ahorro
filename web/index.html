@@ -41,17 +41,14 @@
 <body>
 
 <!-- ══════════ LA HOJA ══════════ -->
-<div class="hoja">
+<div class="hoja" id="hoja">
 
-  <!-- Banda de mes -->
+  <!-- Banda de mes: en un almanaque, arriba va el mes. La marca va abajo,
+       en la banda del anunciante, que es donde va en el papel. -->
   <header class="banda-mes">
-    <h1 class="marca">
-      <span class="marca__nombre">Almanaque</span>
-      <span class="marca__nombre marca__nombre--2">del Ahorro</span>
-      <span class="marca__bajada">descuentos de súper · amba</span>
-    </h1>
+    <p class="banda-mes__mes" id="bandaMes">Julio 2026</p>
     <div class="banda-mes__derecha">
-      <button class="sello" id="sello" type="button" aria-live="polite">
+      <button class="sello" id="sello" type="button">
         <span class="sello__punto" aria-hidden="true"></span>
         <span class="sello__texto" id="selloTexto">cargando</span>
       </button>
@@ -62,9 +59,10 @@
     </div>
   </header>
 
-  <!-- Perforado -->
+  <!-- Perforado y gancho: la hoja cuelga de algo. -->
   <div class="perforado" aria-hidden="true">
     <span class="perforado__ojal"></span>
+    <span class="perforado__gancho"></span>
     <span class="perforado__linea"></span>
     <span class="perforado__ojal"></span>
   </div>
@@ -74,11 +72,11 @@
 
     <div class="fecha" id="fecha">
       <p class="fecha__nombre" id="fechaNombre">Miércoles</p>
-      <div class="fecha__bloque">
-        <span class="fecha__num" id="fechaNum">29</span>
-        <span class="fecha__mes" id="fechaMes">jul</span>
-      </div>
       <p class="fecha__rel" id="fechaRel">hoy</p>
+      <!-- El slot de efeméride del almanaque, usado para lo que le sirve al
+           usuario: cuándo se resetean los topes y cuándo se cae el catálogo. -->
+      <p class="fecha__nota" id="fechaNota"></p>
+      <span class="fecha__num" id="fechaNum">29</span>
     </div>
 
     <section class="listado" id="listado" aria-live="polite" aria-busy="true">
@@ -87,12 +85,18 @@
 
   </main>
 
-  <!-- Banda de aviso: el resumen del día -->
+  <!-- Banda de aviso: en el almanaque de papel acá va el anunciante.
+       Acá va el mejor ahorro del día, y la marca al pie. -->
   <aside class="banda-aviso" id="bandaAviso" hidden>
-    <span class="banda-aviso__l" id="bandaLabel">Techo de ahorro del día</span>
+    <span class="banda-aviso__l" id="bandaLabel">Lo mejor de hoy</span>
     <strong class="banda-aviso__v" id="techoDia">—</strong>
     <span class="banda-aviso__n" id="techoNota"></span>
   </aside>
+
+  <p class="pie-marca">
+    <span class="pie-marca__n">Almanaque del Ahorro</span>
+    <span class="pie-marca__b">descuentos de súper · amba</span>
+  </p>
 
 </div>
 
@@ -105,7 +109,7 @@
 <section class="cartera" id="cartera" role="dialog" aria-modal="true" aria-labelledby="carteraTitulo" hidden>
   <div class="cartera__agarre" aria-hidden="true"></div>
   <header class="cartera__cab">
-    <h2 id="carteraTitulo">¿Qué tenés en la billetera?</h2>
+    <h2 id="carteraTitulo" tabindex="-1">¿Qué tenés en la billetera?</h2>
     <p>Marcá lo tuyo. Lo demás se imprime en gris, pero no desaparece.</p>
   </header>
   <div class="cartera__lista" id="carteraLista"></div>

@@ -10,6 +10,7 @@ colors:
   cobalto-deep: "#132C77"
   rojo: "#D8232A"
   rojo-deep: "#A5161C"
+  rojo-tope: "#9B1319"
   verde-sello: "#0F6B4A"
   amarillo-perf: "#E8C33E"
   regla-sobre-cobalto: "rgba(255 255 255 / 0.34)"
@@ -140,9 +141,22 @@ confirmación. Estrategia: **Committed** — el cobalto ocupa las bandas y el ri
 | `verde-sello` `#0F6B4A` | Sello de "verificado hoy". Único verde del sistema. |
 | `amarillo-perf` `#E8C33E` | Solo la línea de perforado y el gancho. Decorativo, jamás semántico. |
 
-Contraste mínimo 7:1 para todo dato accionable: se lee bajo tubo fluorescente de
-supermercado y al sol. El rojo sobre papel da 5.4:1 — por eso **el rojo nunca
-carga información sola**, siempre acompaña a un número o una etiqueta en `ink`.
+Contraste mínimo 7:1 para todo dato accionable, medido, no estimado. Se lee bajo
+tubo fluorescente de supermercado y al sol.
+
+| Par | Ratio | Uso |
+|---|---|---|
+| `ink` sobre `paper` | 15.9:1 | Texto principal |
+| `ink-soft` sobre `paper` | **7.2:1** | Metadatos y letra chica |
+| `rojo-tope` sobre `paper` | **7.4:1** | La cifra del tope |
+| `rojo` sobre `paper` | 4.4:1 | **Solo marcas**: domingo, hoy, feriado |
+
+Son dos rojos distintos y la diferencia importa. `rojo` es tinta de calendario:
+marca días, no carga texto que haya que leer. `rojo-tope` es el rojo de imprenta
+para la cifra, que sí es texto y necesita el 7:1.
+
+El nombre del banco va en `ink` pleno, no en `ink-soft`: es el dato con el que
+se decide qué tarjeta apoyar en la caja.
 
 Modo oscuro: se invierte a tinta sobre papel oscuro (`#14161C` de fondo,
 `#E8E5DD` de texto), conservando cobalto y rojo saturados. No es un tema
@@ -212,15 +226,18 @@ Todo lo accionable (riel, filtros, links de fuente) está en la mitad inferior.
 ## Elevation & Depth
 
 **No hay sombras difusas.** El mundo es papel impreso, no material design. La
-profundidad se construye con tres recursos:
+profundidad se construye con cuatro recursos, todos sin blur:
 
 1. **Reglas** (`1px solid paper-edge`) — separan filas como en una planilla.
-2. **Bandas de color plano** — el cobalto avanza, el papel retrocede.
-3. **Una sola sombra dura** en la hoja sobre fondo (`4px 4px 0 rgba(...)`),
-   sin blur, como una hoja levantada del papel de abajo.
+2. **Doble filete** (3px + 1px) bajo la banda de mes y bajo la fecha.
+3. **El canto del taco** — dos reglas desplazadas al pie de la hoja, que son las
+   hojas de abajo del almanaque. **Se ve también en el teléfono**, que es donde
+   la app se usa de verdad: dejar la profundidad solo en `min-width: 600px` la
+   deja en cero en el target real.
+4. **Sombra dura** de la hoja sobre el fondo, solo en pantallas anchas.
 
-El perforado (línea de puntos + dos círculos troquelados) es el único elemento
-puramente material y aparece una sola vez por pantalla.
+El perforado con su gancho es el único elemento puramente material y aparece una
+sola vez por pantalla.
 
 ## Shapes
 
@@ -240,9 +257,26 @@ Contenedor de un día. Fondo papel, sin radio, sombra dura de 4px. Al cambiar de
 día la hoja **se pasa** (translate + fade corto, 180ms), no aparece.
 
 ### `banda-mes`
-Sticky arriba. Mes y año en `label`, y a la derecha el sello de verificación con
-la hora del último scrapeo. Si los datos tienen más de 48 horas, el sello pasa de
-`verde-sello` a `rojo` y dice cuántos días hace.
+Sticky arriba. **Lleva el mes y el año, no la marca** — en un almanaque arriba va
+el mes; el anunciante va abajo. A la derecha, el sello de verificación con la
+hora del último scrapeo: si los datos tienen más de 48 horas pasa de
+`verde-sello` a `rojo` y dice cuántos días hace. Cierra con doble filete
+(3px + 1px), como una cabecera de imprenta.
+
+### `perforado`
+Aparece una sola vez por pantalla: línea troquelada, dos ojales y el **gancho**
+en `amarillo-perf`, que es el único latón del sistema. La hoja cuelga de algo.
+
+### `fecha`
+El numeral ocupa cerca de un tercio del ancho (`t-dia`), como en la hoja de
+papel. A la izquierda, nombre del día, distancia en días, y el slot de
+**efeméride** — donde el almanaque lleva el santoral, acá va lo que le sirve al
+usuario: "último día del mes, mañana se renueva casi todo" o "arranca la semana,
+se resetean los topes semanales". Se marca con un filete `amarillo-perf`.
+
+### `pie-marca`
+El pie del almanaque, donde en el papel va el anunciante (la ferretería, la
+panadería). Acá va la marca del producto.
 
 ### `riel-dia`
 Siete celdas fijas. Cada una: inicial del día arriba (`label`, 1 letra) y número
@@ -256,12 +290,23 @@ Una celda sin promos disponibles baja a 40% de opacidad — no se oculta, porque
 La unidad de lectura. Orden de arriba a abajo, no negociable:
 
 1. **Comercio** en `display`.
-2. **El tope en `numeral` y en `rojo`** — el dato más grande de la tarjeta.
-   Si no hay tope, dice `SIN TOPE` en el mismo tamaño, porque es la mejor noticia
-   posible.
-3. Porcentaje y banco en una línea de `label`.
+2. **El tope en `numeral` y en `rojo-tope`** — el dato más grande de la tarjeta.
+   Si no hay tope dice `SIN TOPE`.
+3. Porcentaje en `label`; el banco en `ink` pleno.
 4. Requisitos en `body`, una línea.
-5. Fuente y fecha de verificación en `ink-soft`, al pie, con link.
+5. Aviso de vencimiento si quedan 7 días o menos, fuente y fecha de
+   verificación al pie, con link.
+
+**Las cuotas sin interés no son un tope.** Van en `cobalto`, nunca en rojo, y
+se agrupan bajo su propio rótulo al final de la lista. Un `6×` y un `$15.000`
+son datos de naturaleza distinta y no compiten en el mismo ranking.
+
+**El orden es por ahorro real, no por presencia de tope.** Se compara
+`min(tope, % × compra de referencia)` con una compra de referencia de $80.000.
+Ordenar poniendo "sin tope" siempre primero hacía que un 15% sin límite le
+ganara a un 35% topeado en $15.000 — es decir, ponía la promo más débil del día
+como titular. La compra de referencia solo sirve para comparar entre promos y
+nunca se le muestra al usuario como si fuera su gasto.
 
 Una promo que el usuario **no** puede usar (banco no marcado) no se borra: se
 imprime en `ink-soft` sobre papel, sin el rojo del tope, agrupada abajo bajo el

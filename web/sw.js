@@ -3,7 +3,9 @@
    sirve siempre desde cache y los datos usan stale-while-revalidate: mostrás
    lo último que tenés al instante y se actualiza atrás si hay red. */
 
-const CACHE = 'almanaque-v1';
+/* Bumpear en cada deploy: el shell es cache-first y si no cambia la constante
+   la versión vieja se queda para siempre. */
+const CACHE = 'almanaque-v2';
 
 const SHELL = [
   './',
@@ -14,6 +16,9 @@ const SHELL = [
   'icon.svg',
   'fonts/archivo-latin.woff2',
   'fonts/archivo-latinext.woff2',
+  // Sin esto, la primera visita nunca guarda los datos: instalás la app,
+  // entrás al súper sin señal y no hay nada que mostrar.
+  'promos.json',
 ];
 
 self.addEventListener('install', (e) => {
@@ -49,6 +54,10 @@ self.addEventListener('fetch', (e) => {
             return res;
           })
           .catch(() => cacheado);
+
+        // Si servimos del cache, la revalidación queda huérfana y el navegador
+        // puede matar al SW antes del cache.put. waitUntil la mantiene viva.
+        if (cacheado) e.waitUntil(red.catch(() => {}));
         return cacheado ?? red;
       }),
     );
