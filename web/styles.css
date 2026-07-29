@@ -468,6 +468,13 @@ button { font: inherit; color: inherit; }
   white-space: nowrap;
 }
 .promo__tope-cifra--texto { font-size: var(--t-xl); letter-spacing: 0.01em; }
+/* La fuente no informó el tope. No es una buena noticia ni una mala: es un
+   dato que falta, y se imprime como tal — nunca en el rojo del tope. */
+.promo__tope-cifra--incierto {
+  color: var(--tinta-suave);
+  font-size: var(--t-xl);
+  letter-spacing: 0.02em;
+}
 /* Las cuotas no son un tope: no llevan el rojo, que está reservado. */
 .promo__tope-cifra--cuotas {
   color: var(--cobalto);

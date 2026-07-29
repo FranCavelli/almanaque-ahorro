@@ -1,0 +1,72 @@
+[
+  {
+    "comercio": "Toledo",
+    "banco": "Toledo",
+    "medios_pago": [
+      "credito",
+      "debito",
+      "qr",
+      "billetera",
+      "prepaga"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "Descuento en el acto, sin tope, con todos los medios de pago",
+    "confianza": "baja",
+    "id": "toledo_toledo_0123456_20_x",
+    "fuente_id": "toledo",
+    "fuente_label": "Toledo",
+    "url_fuente": "https://www.toledodigital.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T15:40:54.229Z"
+  },
+  {
+    "comercio": "Toledo",
+    "banco": "Tarjeta Naranja",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": null,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": 3,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "Solo Tarjeta Naranja (no Naranja Visa ni Mastercard)",
+    "confianza": "media",
+    "id": "tarjeta-naranja_toledo_0123456_x_x",
+    "fuente_id": "toledo",
+    "fuente_label": "Toledo",
+    "url_fuente": "https://www.toledodigital.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T15:40:54.229Z"
+  }
+]

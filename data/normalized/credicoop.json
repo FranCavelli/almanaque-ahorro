@@ -1,0 +1,158 @@
+[
+  {
+    "comercio": "Diarco Pueblo",
+    "banco": "Banco Credicoop",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [],
+    "descuento_pct": 15,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "La página no aclara días ni topes",
+    "confianza": "baja",
+    "id": "banco-credicoop_diarco-pueblo__15_x",
+    "fuente_id": "credicoop",
+    "fuente_label": "Credicoop — Beneficios",
+    "url_fuente": "https://www.bancocredicoop.coop/beneficios",
+    "verificado_at": "2026-07-29T15:42:49.247Z"
+  },
+  {
+    "comercio": "Diarco Barrio",
+    "banco": "Banco Credicoop",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "La página no aclara días ni topes",
+    "confianza": "baja",
+    "id": "banco-credicoop_diarco-barrio__20_x",
+    "fuente_id": "credicoop",
+    "fuente_label": "Credicoop — Beneficios",
+    "url_fuente": "https://www.bancocredicoop.coop/beneficios",
+    "verificado_at": "2026-07-29T15:42:49.247Z"
+  },
+  {
+    "comercio": "Diarco Mayorista",
+    "banco": "Banco Credicoop",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [],
+    "descuento_pct": 15,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "La página no aclara días ni topes",
+    "confianza": "baja",
+    "id": "banco-credicoop_diarco-mayorista__15_x",
+    "fuente_id": "credicoop",
+    "fuente_label": "Credicoop — Beneficios",
+    "url_fuente": "https://www.bancocredicoop.coop/beneficios",
+    "verificado_at": "2026-07-29T15:42:49.247Z"
+  },
+  {
+    "comercio": "Supermercados adheridos",
+    "banco": "Banco Credicoop",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "Mendoza"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "Solo súpers adheridos de Mendoza",
+    "confianza": "baja",
+    "id": "banco-credicoop_supermercados-adheridos__20_x",
+    "fuente_id": "credicoop",
+    "fuente_label": "Credicoop — Beneficios",
+    "url_fuente": "https://www.bancocredicoop.coop/beneficios",
+    "verificado_at": "2026-07-29T15:42:49.247Z"
+  },
+  {
+    "comercio": "Supermercados adheridos",
+    "banco": "Banco Credicoop",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "Córdoba"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "Solo súpers adheridos de Córdoba",
+    "confianza": "baja",
+    "id": "banco-credicoop_supermercados-adheridos__20_x",
+    "fuente_id": "credicoop",
+    "fuente_label": "Credicoop — Beneficios",
+    "url_fuente": "https://www.bancocredicoop.coop/beneficios",
+    "verificado_at": "2026-07-29T15:42:49.247Z"
+  },
+  {
+    "comercio": "Supermercados adheridos",
+    "banco": "Banco Credicoop",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "Santa Fe"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "Solo súpers adheridos de Santa Fe",
+    "confianza": "baja",
+    "id": "banco-credicoop_supermercados-adheridos__20_x",
+    "fuente_id": "credicoop",
+    "fuente_label": "Credicoop — Beneficios",
+    "url_fuente": "https://www.bancocredicoop.coop/beneficios",
+    "verificado_at": "2026-07-29T15:42:49.247Z"
+  }
+]

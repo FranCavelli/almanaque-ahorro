@@ -1,6 +1,4 @@
-# Product
-
-<!-- impeccable:product-schema 1 -->
+# Producto
 
 ## Platform
 
@@ -57,9 +55,9 @@ Dos cosas que un agregador genérico no hace:
 
 ## Brand Commitments
 
-Autor: **Fran4All**. Sin rastros de generación por IA en el código ni en la interfaz.
+Autor: **Fran4All**.
 
-Español rioplatense en toda la UI (voseo). Nombre del producto: **sin definir** — se resuelve junto al mundo visual.
+Español rioplatense en toda la UI (voseo). Nombre del producto: **Almanaque del Ahorro**.
 
 ## Evidence on Hand
 

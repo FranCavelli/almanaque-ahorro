@@ -1,0 +1,80 @@
+[
+  {
+    "comercio": "Aimar Carnes",
+    "banco": "Banco Macro",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [],
+    "descuento_pct": 30,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "Buenos Aires"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "El listado no aclara días ni tarjeta específica; verificar en la web del banco",
+    "confianza": "baja",
+    "id": "banco-macro_aimar-carnes__30_x",
+    "fuente_id": "macro",
+    "fuente_label": "Banco Macro — Beneficios",
+    "url_fuente": "https://www.macro.com.ar/beneficios",
+    "verificado_at": "2026-07-29T15:42:02.611Z"
+  },
+  {
+    "comercio": "Aimar Carnes",
+    "banco": "Banco Macro",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [],
+    "descuento_pct": 25,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "Buenos Aires"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "El listado no aclara días ni tarjeta específica; verificar en la web del banco",
+    "confianza": "baja",
+    "id": "banco-macro_aimar-carnes__25_x",
+    "fuente_id": "macro",
+    "fuente_label": "Banco Macro — Beneficios",
+    "url_fuente": "https://www.macro.com.ar/beneficios",
+    "verificado_at": "2026-07-29T15:42:02.611Z"
+  },
+  {
+    "comercio": "Aimar Carnes",
+    "banco": "Banco Macro",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "Buenos Aires"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "El listado no aclara días ni tarjeta específica; verificar en la web del banco",
+    "confianza": "baja",
+    "id": "banco-macro_aimar-carnes__20_x",
+    "fuente_id": "macro",
+    "fuente_label": "Banco Macro — Beneficios",
+    "url_fuente": "https://www.macro.com.ar/beneficios",
+    "verificado_at": "2026-07-29T15:42:02.611Z"
+  }
+]

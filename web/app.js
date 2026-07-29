@@ -114,7 +114,10 @@ const TICKET_REFERENCIA = 80000;
 function ahorroReal(p) {
   if (p.descuento_pct == null) return -1;
   const bruto = (p.descuento_pct / 100) * TICKET_REFERENCIA;
-  return p.tope_monto == null ? bruto : Math.min(p.tope_monto, bruto);
+  if (p.tope_monto != null) return Math.min(p.tope_monto, bruto);
+  // Sin tope declarado: vale el bruto. Tope desconocido: no puede encabezar el
+  // día prometiendo un ahorro que no sabemos si existe, así que se penaliza.
+  return p.sin_tope_explicito ? bruto : bruto * 0.5;
 }
 
 /* ─────────── render: promo ─────────── */
@@ -130,10 +133,16 @@ function pintarPromo(p, ajena) {
     cifra = `${p.cuotas}×`;
     etiqueta = 'cuotas sin interés';
     clase = ' promo__tope-cifra--cuotas';
-  } else if (p.tope_monto == null) {
+  } else if (p.tope_monto == null && p.sin_tope_explicito) {
     cifra = 'SIN TOPE';
     etiqueta = 'ahorro libre';
     clase = ' promo__tope-cifra--texto';
+  } else if (p.tope_monto == null) {
+    // La fuente no dijo el tope. Decir "sin tope" acá sería inventar la mejor
+    // noticia posible sobre un dato que no tenemos.
+    cifra = 'S/D';
+    etiqueta = 'tope no informado';
+    clase = ' promo__tope-cifra--incierto';
   } else {
     cifra = pesos.format(p.tope_monto);
     etiqueta = `tope ${PERIODO[p.tope_periodo] ?? ''}`.trim();
@@ -288,9 +297,13 @@ function pintarBandaAviso(mias) {
   const mejor = mias[0]; // ya viene ordenada por techo
   $('bandaLabel').textContent = 'Lo mejor de hoy';
 
-  if (mejor.tope_monto == null) {
+  if (mejor.tope_monto == null && mejor.sin_tope_explicito) {
     $('techoDia').textContent = 'SIN TOPE';
     $('techoNota').textContent = `${mejor.descuento_pct}% en ${mejor.comercio}, sin límite de reintegro`;
+  } else if (mejor.tope_monto == null) {
+    $('bandaLabel').textContent = 'Lo mejor de hoy';
+    $('techoDia').textContent = `${mejor.descuento_pct}%`;
+    $('techoNota').textContent = `en ${mejor.comercio} · la fuente no informa el tope, verificá antes de comprar`;
   } else {
     $('techoDia').textContent = pesos.format(mejor.tope_monto);
     $('techoNota').textContent =

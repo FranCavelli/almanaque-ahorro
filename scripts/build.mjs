@@ -62,11 +62,20 @@ async function main() {
   const seed = await readJson(P('data', 'seed.json'), []);
   const overrides = await readJson(P('data', 'overrides.json'), { reemplazar: [], ocultar: [] });
 
-  console.log(`Entradas: ${normalized.length} del modelo, ${seed.length} del seed`);
+  /**
+   * El seed es andamio: sirve para que la app tenga datos reales antes de que
+   * exista una API key. Apenas el modelo produce algo, manda el modelo — si no,
+   * las dos versiones de la misma promo conviven como duplicados, porque el
+   * seed suele nombrar peor al emisor ("Visa plan sueldo" vs "Banco Patagonia")
+   * y por lo tanto genera otro id.
+   */
+  const base = normalized.length ? normalized : seed;
+  const origen = normalized.length ? 'modelo' : 'seed (el modelo no produjo nada)';
+  console.log(`Entradas: ${base.length} desde ${origen}`);
 
   // --- 1. juntar y deduplicar ---
   const porId = new Map();
-  for (const p of [...normalized, ...seed]) {
+  for (const p of base) {
     const id = p.id ?? promoId(p);
     const previo = porId.get(id);
     porId.set(id, previo ? mejor(previo, { ...p, id }) : { ...p, id });

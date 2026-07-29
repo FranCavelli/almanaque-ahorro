@@ -1,0 +1,62 @@
+[
+  {
+    "comercio": "Coto",
+    "banco": "Comunidad Coto",
+    "medios_pago": [
+      "credito",
+      "debito",
+      "qr",
+      "billetera",
+      "otro"
+    ],
+    "dias": [
+      3
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": true,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "online",
+    "vigencia_desde": "2026-07-29",
+    "vigencia_hasta": "2026-07-29",
+    "requisitos": "Hay que ser miembro de Comunidad Coto; en un pago y aplican exclusiones",
+    "confianza": "media",
+    "id": "comunidad-coto_coto_3_20_x",
+    "fuente_id": "coto",
+    "fuente_label": "Coto",
+    "url_fuente": "https://www.coto.com.ar/promociones/",
+    "verificado_at": "2026-07-29T16:02:40.686Z"
+  },
+  {
+    "comercio": "Coto",
+    "banco": "Visa y Mastercard",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      3
+    ],
+    "descuento_pct": 30,
+    "tope_monto": null,
+    "sin_tope_explicito": true,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "online",
+    "vigencia_desde": "2026-07-29",
+    "vigencia_hasta": "2026-07-29",
+    "requisitos": "Solo Coto Digital, válido el miércoles 29/07. Aplican exclusiones",
+    "confianza": "alta",
+    "id": "visa-y-mastercard_coto_3_30_x",
+    "fuente_id": "coto",
+    "fuente_label": "Coto",
+    "url_fuente": "https://www.coto.com.ar/promociones/",
+    "verificado_at": "2026-07-29T16:02:40.686Z"
+  }
+]

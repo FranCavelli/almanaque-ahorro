@@ -18,6 +18,8 @@
 
 import Anthropic from '@anthropic-ai/sdk';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SOURCES } from '../src/sources.mjs';
@@ -44,7 +46,11 @@ REGLAS DE INCLUSIÓN
 - Si la página no tiene ninguna promo de supermercado, devolvé un array vacío. No inventes nada.
 
 CÓMO COMPLETAR LOS CAMPOS
-- El TOPE es el dato más importante después del porcentaje. Buscalo con cuidado: suele estar en la letra chica en mayúsculas ("CON TOPE DE DESCUENTO DE $10.000 POR SEMANA"). Si el texto dice "sin tope", usá null en tope_monto y null en tope_periodo.
+- El TOPE es el dato más importante después del porcentaje. Buscalo con cuidado: suele estar en la letra chica en mayúsculas ("CON TOPE DE DESCUENTO DE $10.000 POR SEMANA").
+- Distinguí con cuidado estos tres casos, porque la app los muestra distinto y confundirlos le miente al usuario:
+  1. El texto dice un monto -> tope_monto con el número, sin_tope_explicito en false.
+  2. El texto dice literalmente que no hay tope ("sin tope", "¡Sin Tope!", "sin límite de reintegro") -> tope_monto en null, sin_tope_explicito en TRUE.
+  3. El texto no menciona ningún tope, ni monto ni ausencia -> tope_monto en null, sin_tope_explicito en FALSE. Esto pasa mucho en páginas de listado, donde cada tarjeta solo dice "25% de descuento" y el tope está en el detalle que no tenemos. Ante la mínima duda, este caso.
 - tope_monto va como entero sin puntos ni símbolos: "$12.000" -> 12000.
 - Traducí los días a números: domingo=0, lunes=1, martes=2, miércoles=3, jueves=4, viernes=5, sábado=6. "Todos los jueves" -> [4]. "Lunes y miércoles" -> [1,3]. "De lunes a miércoles" -> [1,2,3]. "Todos los días" -> [0,1,2,3,4,5,6].
 - banco: usá el nombre con el que la gente lo conoce ("Banco Nación", no "BNA S.A."). Si el beneficio lo da la tarjeta propia de la cadena, poné ese nombre ("Carrefour Banco", "Tarjeta Cencosud").
@@ -109,6 +115,9 @@ async function normalizeOne(source, text) {
   return { promos, usage: msg.usage };
 }
 
+const HUELLAS = join(OUT_DIR, '_huellas.json');
+const huella = (t) => createHash('sha256').update(t).digest('hex').slice(0, 16);
+
 async function main() {
   if (!process.env.ANTHROPIC_API_KEY) {
     console.error('Falta ANTHROPIC_API_KEY en el entorno.');
@@ -116,7 +125,10 @@ async function main() {
     process.exit(1);
   }
 
-  const only = process.argv.slice(2);
+  const args = process.argv.slice(2);
+  const forzar = args.includes('--todo');
+  const only = args.filter((a) => !a.startsWith('--'));
+
   const index = JSON.parse(await readFile(join(RAW_DIR, '_index.json'), 'utf8'));
   const usable = index.fuentes.filter((f) => f.ok && (!only.length || only.includes(f.id)));
 
@@ -126,14 +138,37 @@ async function main() {
   }
 
   await mkdir(OUT_DIR, { recursive: true });
-  console.log(`Normalizando ${usable.length} fuente(s) con ${MODEL} (effort: ${EFFORT})\n`);
+
+  /**
+   * Las promos se renuevan una vez por mes. Volver a mandarle al modelo un
+   * texto idéntico al de ayer es gasto puro, así que guardamos la huella de
+   * cada archivo crudo y solo pagamos por lo que efectivamente cambió.
+   * `--todo` ignora las huellas y re-normaliza entero.
+   */
+  const previas = existsSync(HUELLAS)
+    ? JSON.parse(await readFile(HUELLAS, 'utf8'))
+    : {};
+  const nuevas = { ...previas };
+
+  console.log(`Normalizando con ${MODEL} (effort: ${EFFORT})\n`);
 
   const all = [];
   const totals = { in: 0, out: 0, cacheRead: 0, cacheWrite: 0 };
+  let saltadas = 0;
 
   for (const f of usable) {
     const source = SOURCES.find((s) => s.id === f.id);
     const text = await readFile(join(RAW_DIR, `${f.id}.txt`), 'utf8');
+    const h = huella(text);
+    const cacheado = join(OUT_DIR, `${f.id}.json`);
+
+    if (!forzar && previas[f.id] === h && existsSync(cacheado)) {
+      const previo = JSON.parse(await readFile(cacheado, 'utf8'));
+      all.push(...previo);
+      saltadas++;
+      console.log(`  =  ${f.id.padEnd(20)} sin cambios (${previo.length} promos)`);
+      continue;
+    }
 
     try {
       const { promos, usage } = await normalizeOne(source, text);
@@ -158,6 +193,7 @@ async function main() {
         'utf8',
       );
       all.push(...enriched);
+      nuevas[f.id] = h; // solo se registra si la corrida salió bien
 
       const dias = [...new Set(enriched.flatMap((p) => p.dias))].sort();
       console.log(
@@ -170,12 +206,20 @@ async function main() {
   }
 
   await writeFile(join(OUT_DIR, '_all.json'), JSON.stringify(all, null, 2), 'utf8');
+  await writeFile(HUELLAS, JSON.stringify(nuevas, null, 2), 'utf8');
 
-  console.log(`\n${all.length} promos extraídas -> data/normalized/`);
+  const consultadas = usable.length - saltadas;
+  console.log(`\n${all.length} promos -> data/normalized/`);
+  console.log(`Fuentes: ${consultadas} consultadas al modelo, ${saltadas} sin cambios`);
   console.log(
     `Tokens: ${totals.in} in / ${totals.out} out ` +
       `(cache: ${totals.cacheRead} leídos, ${totals.cacheWrite} escritos)`,
   );
+
+  // Precios de claude-opus-5 por millón de tokens: $5 in, $25 out, $0.50 cache read.
+  const sinCache = Math.max(0, totals.in - totals.cacheRead);
+  const usd = (sinCache * 5 + totals.cacheRead * 0.5 + totals.out * 25) / 1e6;
+  console.log(`Costo aproximado de esta corrida: USD ${usd.toFixed(3)}`);
 }
 
 main().catch((err) => {

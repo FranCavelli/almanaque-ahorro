@@ -1,0 +1,581 @@
+[
+  {
+    "comercio": "The Food Market",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 25,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_the-food-market_0123456_25_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "ChangoMás",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_changomas_012456_20_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "La Anónima",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_la-anonima_012456_20_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Mayorista Nini",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_mayorista-nini_012456_20_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Dia",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_dia_012456_20_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Almacor",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 10,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_almacor_012456_10_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Disco",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_disco_012456_20_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Jumbo",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_jumbo_012456_20_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Supermercados Toledo",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 30,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": 3,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_supermercados-toledo_012456_30_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Supermercados Toledo",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 15,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": 3,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_supermercados-toledo_012456_15_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Makro",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_makro_012456_20_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Supermercado El Nene",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 25,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_supermercado-el-nene_012456_25_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Supermercados Vea",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_supermercados-vea_012456_20_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Supermercado DAR",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 15,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_supermercado-dar_012456_15_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Supermercado El Tunel",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 25,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_supermercado-el-tunel_012456_25_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Supercoop",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_supercoop_012456_20_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  },
+  {
+    "comercio": "Cordial Supermercado",
+    "banco": "Banco Ciudad",
+    "medios_pago": [
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 10,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": null,
+    "confianza": "media",
+    "id": "banco-ciudad_cordial-supermercado_012456_10_x",
+    "fuente_id": "ciudad",
+    "fuente_label": "Banco Ciudad — Beneficios",
+    "url_fuente": "https://www.bancociudad.com.ar/beneficios/",
+    "verificado_at": "2026-07-29T16:04:11.701Z"
+  }
+]

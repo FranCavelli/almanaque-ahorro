@@ -1,0 +1,245 @@
+[
+  {
+    "comercio": "Makro",
+    "banco": "Mercado Pago",
+    "medios_pago": [
+      "billetera",
+      "qr"
+    ],
+    "dias": [
+      5,
+      6
+    ],
+    "descuento_pct": 10,
+    "tope_monto": null,
+    "sin_tope_explicito": true,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Solo pagando con dinero en cuenta; excluye carnes y embutidos",
+    "confianza": "alta",
+    "id": "mercado-pago_makro_56_10_x",
+    "fuente_id": "makro",
+    "fuente_label": "Makro",
+    "url_fuente": "https://makro.com.ar/beneficios-bancarios/",
+    "verificado_at": "2026-07-29T16:03:41.925Z"
+  },
+  {
+    "comercio": "Makro",
+    "banco": "MODO",
+    "medios_pago": [
+      "modo",
+      "credito",
+      "debito"
+    ],
+    "dias": [
+      4
+    ],
+    "descuento_pct": 20,
+    "tope_monto": 20000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Tope por banco por mes; no válido en autopagos ni pagos online",
+    "confianza": "alta",
+    "id": "modo_makro_4_20_20000",
+    "fuente_id": "makro",
+    "fuente_label": "Makro",
+    "url_fuente": "https://makro.com.ar/beneficios-bancarios/",
+    "verificado_at": "2026-07-29T16:03:41.925Z"
+  },
+  {
+    "comercio": "Makro",
+    "banco": "Banco Hipotecario",
+    "medios_pago": [
+      "debito",
+      "qr",
+      "modo"
+    ],
+    "dias": [
+      2
+    ],
+    "descuento_pct": 25,
+    "tope_monto": 10000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Con débito Visa por QR desde app BH o MODO",
+    "confianza": "alta",
+    "id": "banco-hipotecario_makro_2_25_10000",
+    "fuente_id": "makro",
+    "fuente_label": "Makro",
+    "url_fuente": "https://makro.com.ar/beneficios-bancarios/",
+    "verificado_at": "2026-07-29T16:03:41.925Z"
+  },
+  {
+    "comercio": "Makro",
+    "banco": "Banco Hipotecario",
+    "medios_pago": [
+      "debito",
+      "qr",
+      "modo"
+    ],
+    "dias": [
+      2
+    ],
+    "descuento_pct": 25,
+    "tope_monto": 30000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Exclusivo clientes Búho One, Sueldo, Emprendedor o Jubilado",
+    "confianza": "alta",
+    "id": "banco-hipotecario_makro_2_25_30000",
+    "fuente_id": "makro",
+    "fuente_label": "Makro",
+    "url_fuente": "https://makro.com.ar/beneficios-bancarios/",
+    "verificado_at": "2026-07-29T16:03:41.925Z"
+  },
+  {
+    "comercio": "Makro",
+    "banco": "Cencopay",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      2,
+      4
+    ],
+    "descuento_pct": 25,
+    "tope_monto": 20000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Solo con tarjeta física Cencopay crédito",
+    "confianza": "alta",
+    "id": "cencopay_makro_24_25_20000",
+    "fuente_id": "makro",
+    "fuente_label": "Makro",
+    "url_fuente": "https://makro.com.ar/beneficios-bancarios/",
+    "verificado_at": "2026-07-29T16:03:41.925Z"
+  },
+  {
+    "comercio": "Makro",
+    "banco": "Banco Comafi",
+    "medios_pago": [
+      "credito",
+      "debito",
+      "modo"
+    ],
+    "dias": [
+      3
+    ],
+    "descuento_pct": 20,
+    "tope_monto": 15000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Pagando por MODO; hay que ser titular de caja de ahorro en Comafi",
+    "confianza": "media",
+    "id": "banco-comafi_makro_3_20_15000",
+    "fuente_id": "makro",
+    "fuente_label": "Makro",
+    "url_fuente": "https://makro.com.ar/beneficios-bancarios/",
+    "verificado_at": "2026-07-29T16:03:41.925Z"
+  },
+  {
+    "comercio": "Makro",
+    "banco": "Cencopay",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      1,
+      2,
+      3
+    ],
+    "descuento_pct": null,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Cuotas sin interés en toda la compra con tarjeta física Cencopay",
+    "confianza": "media",
+    "id": "cencopay_makro_123_x_x",
+    "fuente_id": "makro",
+    "fuente_label": "Makro",
+    "url_fuente": "https://makro.com.ar/beneficios-bancarios/",
+    "verificado_at": "2026-07-29T16:03:41.925Z"
+  },
+  {
+    "comercio": "Makro",
+    "banco": "Banco Comafi",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": null,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": 3,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Tarjetas Global, Classic, Premium y Único de Comafi",
+    "confianza": "alta",
+    "id": "banco-comafi_makro_0123456_x_x",
+    "fuente_id": "makro",
+    "fuente_label": "Makro",
+    "url_fuente": "https://makro.com.ar/beneficios-bancarios/",
+    "verificado_at": "2026-07-29T16:03:41.925Z"
+  }
+]

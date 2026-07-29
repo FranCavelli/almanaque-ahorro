@@ -1,0 +1,69 @@
+[
+  {
+    "comercio": "Maxiconsumo",
+    "banco": "Mercado Pago",
+    "medios_pago": [
+      "qr",
+      "billetera"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 5,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Solo con dinero en cuenta escaneando QR en cajas de sucursales; no acumulable",
+    "confianza": "alta",
+    "id": "mercado-pago_maxiconsumo_0123456_5_x",
+    "fuente_id": "maxiconsumo",
+    "fuente_label": "Maxiconsumo",
+    "url_fuente": "https://www.maxiconsumo.com/promociones",
+    "verificado_at": "2026-07-29T15:41:15.090Z"
+  },
+  {
+    "comercio": "Maxiconsumo",
+    "banco": "Naranja X",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": null,
+    "tope_monto": null,
+    "tope_periodo": null,
+    "cuotas": 3,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": null,
+    "requisitos": "Plan Z exclusivo tarjeta de crédito Naranja X (no Visa/Master/Amex); no válido pagando desde la web",
+    "confianza": "media",
+    "id": "naranja-x_maxiconsumo_0123456_x_x",
+    "fuente_id": "maxiconsumo",
+    "fuente_label": "Maxiconsumo",
+    "url_fuente": "https://www.maxiconsumo.com/promociones",
+    "verificado_at": "2026-07-29T15:41:15.090Z"
+  }
+]

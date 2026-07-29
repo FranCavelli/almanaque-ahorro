@@ -1,0 +1,441 @@
+[
+  {
+    "comercio": "Carrefour",
+    "banco": "Carrefour Banco",
+    "medios_pago": [
+      "debito",
+      "billetera"
+    ],
+    "dias": [
+      4
+    ],
+    "descuento_pct": 20,
+    "tope_monto": 10000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "semanal",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "online",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Solo compras online o app, con Cuenta Digital; no vale en sucursales",
+    "confianza": "alta",
+    "id": "carrefour-banco_carrefour_4_20_10000",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Mercado Pago",
+    "medios_pago": [
+      "billetera"
+    ],
+    "dias": [
+      1,
+      3
+    ],
+    "descuento_pct": null,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": 6,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Con Cuotas sin Tarjeta de Mercado Pago, sujeto a aprobación crediticia",
+    "confianza": "alta",
+    "id": "mercado-pago_carrefour_13_x_x",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Carrefour Banco",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      4
+    ],
+    "descuento_pct": 20,
+    "tope_monto": 10000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "semanal",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "online",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Solo online/app con Mastercard de Carrefour Banco en un pago",
+    "confianza": "alta",
+    "id": "carrefour-banco_carrefour_4_20_10000",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Carrefour Banco",
+    "medios_pago": [
+      "debito",
+      "billetera"
+    ],
+    "dias": [
+      5
+    ],
+    "descuento_pct": 15,
+    "tope_monto": null,
+    "sin_tope_explicito": true,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Con Cuenta Digital; no vale en Carrefour Maxi",
+    "confianza": "alta",
+    "id": "carrefour-banco_carrefour_5_15_x",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour Maxi",
+    "banco": "Carrefour Banco",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      1,
+      2
+    ],
+    "descuento_pct": 15,
+    "tope_monto": null,
+    "sin_tope_explicito": true,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Exclusivo sucursales Carrefour Maxi",
+    "confianza": "alta",
+    "id": "carrefour-banco_carrefour-maxi_12_15_x",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Mi Carrefour",
+    "medios_pago": [
+      "otro"
+    ],
+    "dias": [
+      1,
+      2,
+      3
+    ],
+    "descuento_pct": 10,
+    "tope_monto": 35000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Exclusivo mayores de 60 o beneficiarios ANSES con Mi Carrefour",
+    "confianza": "alta",
+    "id": "mi-carrefour_carrefour_123_10_35000",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour Maxi",
+    "banco": "Mercado Pago",
+    "medios_pago": [
+      "qr",
+      "billetera"
+    ],
+    "dias": [
+      5
+    ],
+    "descuento_pct": 10,
+    "tope_monto": null,
+    "sin_tope_explicito": true,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Pagando con QR y dinero en cuenta, solo en sucursales Carrefour Maxi",
+    "confianza": "alta",
+    "id": "mercado-pago_carrefour-maxi_5_10_x",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Carrefour Banco",
+    "medios_pago": [
+      "debito",
+      "billetera"
+    ],
+    "dias": [
+      6,
+      0
+    ],
+    "descuento_pct": 10,
+    "tope_monto": null,
+    "sin_tope_explicito": true,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Con Cuenta Digital; no vale en Carrefour Maxi",
+    "confianza": "alta",
+    "id": "carrefour-banco_carrefour_60_10_x",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Club La Nación",
+    "medios_pago": [
+      "otro"
+    ],
+    "dias": [
+      1
+    ],
+    "descuento_pct": 15,
+    "tope_monto": null,
+    "sin_tope_explicito": true,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Un uso por cliente por semana; no vale en Carrefour Maxi",
+    "confianza": "alta",
+    "id": "club-la-nacion_carrefour_1_15_x",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Banco Patagonia",
+    "medios_pago": [
+      "debito",
+      "credito"
+    ],
+    "dias": [
+      3
+    ],
+    "descuento_pct": 20,
+    "tope_monto": 15000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Exclusivo clientes con plan sueldo, Visa en un pago",
+    "confianza": "alta",
+    "id": "banco-patagonia_carrefour_3_20_15000",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Banco Patagonia",
+    "medios_pago": [
+      "debito",
+      "credito"
+    ],
+    "dias": [
+      3
+    ],
+    "descuento_pct": 25,
+    "tope_monto": 20000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Exclusivo plan sueldo cartera Patagonia Plus, Visa en un pago",
+    "confianza": "alta",
+    "id": "banco-patagonia_carrefour_3_25_20000",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Banco Patagonia",
+    "medios_pago": [
+      "debito",
+      "credito"
+    ],
+    "dias": [
+      3
+    ],
+    "descuento_pct": 35,
+    "tope_monto": 25000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": null,
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Exclusivo plan sueldo cartera Patagonia Singular, Visa en un pago",
+    "confianza": "media",
+    "id": "banco-patagonia_carrefour_3_35_25000",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Carrefour Banco",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      6,
+      0
+    ],
+    "descuento_pct": null,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": 3,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Con Mastercard de Carrefour Banco",
+    "confianza": "alta",
+    "id": "carrefour-banco_carrefour_60_x_x",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Carrefour Banco",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      2
+    ],
+    "descuento_pct": 20,
+    "tope_monto": null,
+    "sin_tope_explicito": true,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "En un pago; no vale en Carrefour Maxi",
+    "confianza": "alta",
+    "id": "carrefour-banco_carrefour_2_20_x",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  },
+  {
+    "comercio": "Carrefour",
+    "banco": "Mi Carrefour",
+    "medios_pago": [
+      "otro"
+    ],
+    "dias": [
+      4
+    ],
+    "descuento_pct": 15,
+    "tope_monto": 20000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "Santa Fe",
+      "Formosa",
+      "Neuquén",
+      "Salta",
+      "Río Negro",
+      "Tierra del Fuego",
+      "Buenos Aires"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": null,
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Exclusivo empleados públicos, en rubros seleccionados y ciudades puntuales",
+    "confianza": "media",
+    "id": "mi-carrefour_carrefour_4_15_20000",
+    "fuente_id": "carrefour",
+    "fuente_label": "Carrefour",
+    "url_fuente": "https://www.carrefour.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:02:11.736Z"
+  }
+]

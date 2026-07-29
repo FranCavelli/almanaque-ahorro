@@ -12,7 +12,8 @@
  *   node scripts/scrape.mjs bna carrefour  # solo algunas
  */
 
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, readFile, mkdir } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SOURCES } from '../src/sources.mjs';
@@ -229,8 +230,23 @@ async function main() {
     console.log(`${mark} ${r.id.padEnd(20)} ${String(r.ms + 'ms').padStart(7)}  ${detail}`);
   }
 
-  const index = { generado: new Date().toISOString(), fuentes: results };
-  await writeFile(join(RAW_DIR, '_index.json'), JSON.stringify(index, null, 2), 'utf8');
+  /* Si se scrapea un subconjunto, el indice se MERGEA. Pisarlo con solo esas
+     fuentes borraba del mapa a las demas, cuyos .txt siguen en disco, y la
+     etapa siguiente nunca las miraba. */
+  const indexPath = join(RAW_DIR, '_index.json');
+  const previo = existsSync(indexPath)
+    ? JSON.parse(await readFile(indexPath, 'utf8')).fuentes ?? []
+    : [];
+
+  const porId = new Map(previo.map((f) => [f.id, f]));
+  for (const r of results) porId.set(r.id, r);
+
+  // Sacamos del indice lo que ya no existe en el registro de fuentes.
+  const vigentes = new Set(SOURCES.map((s) => s.id));
+  const fuentes = [...porId.values()].filter((f) => vigentes.has(f.id));
+
+  const index = { generado: new Date().toISOString(), fuentes };
+  await writeFile(indexPath, JSON.stringify(index, null, 2), 'utf8');
 
   const ok = results.filter((r) => r.ok).length;
   console.log(`\n${ok}/${results.length} fuentes con contenido util -> data/raw/`);

@@ -1,10 +1,12 @@
 name: Actualizar promos
 
-# Las promos se renuevan casi enteras el día 1 de cada mes y algunas son
-# semanales. Dos corridas por día alcanzan de sobra y dejan margen si una falla.
+# El scraping es gratis; lo que se paga es la normalización. Como solo se
+# consulta al modelo por las fuentes cuyo texto cambió (ver las huellas en
+# scripts/normalize.mjs), correr todos los días sale casi nada: el gasto real
+# se concentra el día 1, cuando las cadenas renuevan el catálogo entero.
 on:
   schedule:
-    - cron: '0 9,21 * * *' # 06:00 y 18:00 en Argentina (UTC-3)
+    - cron: '0 9 * * *' # 06:00 en Argentina (UTC-3)
   workflow_dispatch: # y a mano cuando quieras
 
 concurrency:
@@ -37,7 +39,9 @@ jobs:
         run: npm run scrape
         continue-on-error: true # una fuente caída no debe tumbar la corrida
 
-      - name: Normalizar con Claude
+      # Solo se consulta al modelo por las fuentes cuyo texto cambió desde la
+      # corrida anterior. El día 1 cambian casi todas; el resto del mes, ninguna.
+      - name: Normalizar
         run: npm run normalize
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -60,7 +64,7 @@ jobs:
         run: |
           git config user.name  'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git add web/promos.json data/normalized
+          git add web/promos.json data/normalized data/normalized/_huellas.json
           if git diff --staged --quiet; then
             echo "Sin cambios."
           else

@@ -1,0 +1,315 @@
+[
+  {
+    "comercio": "ChangoMás",
+    "banco": "MâsClub (ChangoMás)",
+    "medios_pago": [
+      "otro"
+    ],
+    "dias": [
+      3,
+      4
+    ],
+    "descuento_pct": 15,
+    "tope_monto": null,
+    "sin_tope_explicito": true,
+    "tope_periodo": null,
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-06-01",
+    "vigencia_hasta": "2026-12-31",
+    "requisitos": "Exclusivo socios MâsClub; excluye carnicería, frutas y verduras, bebidas y electro",
+    "confianza": "alta",
+    "id": "masclub-changomas_changomas_34_15_x",
+    "fuente_id": "changomas",
+    "fuente_label": "ChangoMás",
+    "url_fuente": "https://www.masonline.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:03:06.281Z"
+  },
+  {
+    "comercio": "ChangoMás",
+    "banco": "Banco Nación",
+    "medios_pago": [
+      "credito",
+      "modo",
+      "qr"
+    ],
+    "dias": [
+      3
+    ],
+    "descuento_pct": 35,
+    "tope_monto": 15000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "semanal",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Pagando con MODO BNA+ o tarjeta física; no aplica saldo en cuenta ni NFC",
+    "confianza": "alta",
+    "id": "banco-nacion_changomas_3_35_15000",
+    "fuente_id": "changomas",
+    "fuente_label": "ChangoMás",
+    "url_fuente": "https://www.masonline.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:03:06.281Z"
+  },
+  {
+    "comercio": "ChangoMás",
+    "banco": "Banco Patagonia",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      3
+    ],
+    "descuento_pct": 20,
+    "tope_monto": 10000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "mensual",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-05-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Solo con Tarjeta de Crédito Patagonia 365 en un pago",
+    "confianza": "alta",
+    "id": "banco-patagonia_changomas_3_20_10000",
+    "fuente_id": "changomas",
+    "fuente_label": "ChangoMás",
+    "url_fuente": "https://www.masonline.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:03:06.281Z"
+  },
+  {
+    "comercio": "ChangoMás",
+    "banco": "Todos los medios de pago",
+    "medios_pago": [
+      "credito",
+      "debito",
+      "qr",
+      "billetera",
+      "otro"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 10,
+    "tope_monto": 12000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "por_compra",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Exclusivo beneficiarios ANSES presentando DNI; tope mensual $50.000 y solo en productos seleccionados",
+    "confianza": "alta",
+    "id": "todos-los-medios-de-pago_changomas_0123456_10_12000",
+    "fuente_id": "changomas",
+    "fuente_label": "ChangoMás",
+    "url_fuente": "https://www.masonline.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:03:06.281Z"
+  },
+  {
+    "comercio": "ChangoMás",
+    "banco": "Todos los medios de pago",
+    "medios_pago": [
+      "credito",
+      "debito",
+      "qr",
+      "billetera",
+      "otro"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": 10,
+    "tope_monto": 12000,
+    "sin_tope_explicito": false,
+    "tope_periodo": "por_compra",
+    "cuotas": null,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Exclusivo empleados municipales y provinciales con DNI y recibo de sueldo; 1 transacción por día; excluye sucursal Luján",
+    "confianza": "alta",
+    "id": "todos-los-medios-de-pago_changomas_0123456_10_12000",
+    "fuente_id": "changomas",
+    "fuente_label": "ChangoMás",
+    "url_fuente": "https://www.masonline.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:03:06.281Z"
+  },
+  {
+    "comercio": "ChangoMás",
+    "banco": "Mercado Pago",
+    "medios_pago": [
+      "qr",
+      "credito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": null,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": 2,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Compras de $50.000 a $149.000 con QR y Tarjeta de Crédito Mercado Pago",
+    "confianza": "alta",
+    "id": "mercado-pago_changomas_0123456_x_x",
+    "fuente_id": "changomas",
+    "fuente_label": "ChangoMás",
+    "url_fuente": "https://www.masonline.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:03:06.282Z"
+  },
+  {
+    "comercio": "ChangoMás",
+    "banco": "Mercado Pago",
+    "medios_pago": [
+      "qr",
+      "credito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": null,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": 3,
+    "provincias": [
+      "*"
+    ],
+    "canal": "sucursal",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-07-31",
+    "requisitos": "Compras desde $150.000 con QR y Tarjeta de Crédito Mercado Pago",
+    "confianza": "alta",
+    "id": "mercado-pago_changomas_0123456_x_x",
+    "fuente_id": "changomas",
+    "fuente_label": "ChangoMás",
+    "url_fuente": "https://www.masonline.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:03:06.282Z"
+  },
+  {
+    "comercio": "ChangoMás",
+    "banco": "Naranja X",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": null,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": 4,
+    "provincias": [
+      "Catamarca",
+      "Chaco",
+      "Corrientes",
+      "Formosa",
+      "Jujuy",
+      "La Rioja",
+      "Mendoza",
+      "Misiones",
+      "Salta",
+      "San Juan",
+      "San Luis",
+      "Santiago del Estero",
+      "Tucumán"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-09-30",
+    "requisitos": "Solo con tarjeta Naranja X; también válido en Más Online",
+    "confianza": "alta",
+    "id": "naranja-x_changomas_0123456_x_x",
+    "fuente_id": "changomas",
+    "fuente_label": "ChangoMás",
+    "url_fuente": "https://www.masonline.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:03:06.282Z"
+  },
+  {
+    "comercio": "ChangoMás",
+    "banco": "Banco de Córdoba (Bancor)",
+    "medios_pago": [
+      "credito"
+    ],
+    "dias": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "descuento_pct": null,
+    "tope_monto": null,
+    "sin_tope_explicito": false,
+    "tope_periodo": null,
+    "cuotas": 4,
+    "provincias": [
+      "*"
+    ],
+    "canal": "ambos",
+    "vigencia_desde": "2026-07-01",
+    "vigencia_hasta": "2026-09-30",
+    "requisitos": "Con tarjetas de crédito Visa o Mastercard del Banco de Córdoba",
+    "confianza": "alta",
+    "id": "banco-de-cordoba-bancor_changomas_0123456_x_x",
+    "fuente_id": "changomas",
+    "fuente_label": "ChangoMás",
+    "url_fuente": "https://www.masonline.com.ar/promociones-bancarias",
+    "verificado_at": "2026-07-29T16:03:06.282Z"
+  }
+]

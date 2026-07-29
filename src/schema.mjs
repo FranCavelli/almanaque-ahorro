@@ -35,22 +35,34 @@ export const PROMO_PROPS = {
     items: { type: 'integer', enum: [0, 1, 2, 3, 4, 5, 6] },
   },
   descuento_pct: {
-    type: ['integer', 'null'],
+    anyOf: [{ type: 'integer' }, { type: 'null' }],
     description:
       'Porcentaje de descuento o reintegro. null si la promo no es porcentual (ej: solo cuotas sin interes).',
   },
   tope_monto: {
-    type: ['integer', 'null'],
+    anyOf: [{ type: 'integer' }, { type: 'null' }],
     description:
-      'Tope de reintegro en pesos, como numero entero sin puntos ni simbolos. null si no hay tope o no se informa.',
+      'Tope de reintegro en pesos, como numero entero sin puntos ni simbolos. null si no hay tope, o si el texto no lo informa.',
   },
+  // "No tiene tope" y "no dice cual es el tope" son cosas distintas y el
+  // producto no puede confundirlas: mostrar SIN TOPE cuando en realidad no
+  // sabemos es peor que no mostrar nada.
+  sin_tope_explicito: {
+    type: 'boolean',
+    description:
+      'true SOLO si el texto dice literalmente que no hay tope ("sin tope", "sin limite de reintegro", "¡Sin Tope!"). false si el texto simplemente no menciona ningun tope. Ante la duda, false.',
+  },
+  // Un `enum` con null adentro de un tipo nullable lo rechaza el validador de
+  // structured outputs. La forma que acepta es anyOf.
   tope_periodo: {
-    type: ['string', 'null'],
-    description: 'Periodo sobre el que se calcula el tope.',
-    enum: ['diario', 'semanal', 'quincenal', 'mensual', 'por_compra', null],
+    anyOf: [
+      { type: 'string', enum: ['diario', 'semanal', 'quincenal', 'mensual', 'por_compra'] },
+      { type: 'null' },
+    ],
+    description: 'Periodo sobre el que se calcula el tope. null si no hay tope.',
   },
   cuotas: {
-    type: ['integer', 'null'],
+    anyOf: [{ type: 'integer' }, { type: 'null' }],
     description: 'Cantidad de cuotas sin interes, si la promo las ofrece. null si no aplica.',
   },
   provincias: {
@@ -65,15 +77,15 @@ export const PROMO_PROPS = {
     enum: ['sucursal', 'online', 'ambos'],
   },
   vigencia_desde: {
-    type: ['string', 'null'],
+    anyOf: [{ type: 'string' }, { type: 'null' }],
     description: 'Fecha de inicio en formato YYYY-MM-DD. null si no se informa.',
   },
   vigencia_hasta: {
-    type: ['string', 'null'],
+    anyOf: [{ type: 'string' }, { type: 'null' }],
     description: 'Fecha de fin en formato YYYY-MM-DD. null si no se informa.',
   },
   requisitos: {
-    type: ['string', 'null'],
+    anyOf: [{ type: 'string' }, { type: 'null' }],
     description:
       'Condiciones relevantes en una linea corta y en espanol rioplatense. Ej: "Solo con tope semanal por CUIT", "Exclusivo clientes con cuenta sueldo". null si no hay ninguna destacable.',
   },
@@ -103,6 +115,7 @@ export const EXTRACTION_SCHEMA = {
           'dias',
           'descuento_pct',
           'tope_monto',
+          'sin_tope_explicito',
           'tope_periodo',
           'cuotas',
           'provincias',
