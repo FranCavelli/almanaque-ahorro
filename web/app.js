@@ -316,43 +316,63 @@ function pintarBandaAviso(mias) {
   }
 }
 
+/**
+ * El riel arranca en HOY y avanza siete días.
+ *
+ * Antes iba en orden de calendario fijo (D L M M J V S) mientras cada celda
+ * mostraba la PRÓXIMA vez que caía ese día. Con eso, un martes futuro quedaba
+ * a la izquierda del miércoles de hoy: izquierda es pasado en cualquier lectura
+ * y la app decía lo contrario. Ahora la posición sí significa distancia.
+ */
 function pintarRiel() {
   const riel = $('riel');
 
   /* Si reconstruimos los botones perdemos el foco del que acaban de tocar,
      así que la primera vez se crean y después solo se actualizan. */
   if (!riel.children.length) {
-    for (let d = 0; d < 7; d++) {
+    for (let i = 0; i < 7; i++) {
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'riel__dia';
-      b.innerHTML = `<span class="riel__letra">${INICIAL[d]}</span><span class="riel__n"></span>`;
+      b.innerHTML =
+        '<span class="riel__letra"></span>' +
+        '<span class="riel__n"></span>' +
+        '<span class="riel__cuando"></span>';
       b.addEventListener('click', () => {
-        estado.dia = d;
+        estado.dia = Number(b.dataset.dia);
         pintarDia();
       });
       riel.appendChild(b);
     }
   }
 
-  for (let d = 0; d < 7; d++) {
+  for (let i = 0; i < 7; i++) {
+    const d = (estado.hoy + i) % 7;
     const ids = new Set(estado.datos.por_dia[d] ?? []);
     const n = estado.datos.promos.filter((p) => ids.has(p.id) && esMia(p)).length;
-    const b = riel.children[d];
+    const b = riel.children[i];
 
+    b.dataset.dia = d;
     b.dataset.domingo = d === 0 ? 'si' : 'no';
-    b.dataset.hoy = d === estado.hoy ? 'si' : 'no';
+    b.dataset.hoy = i === 0 ? 'si' : 'no';
     b.dataset.vacio = n === 0 ? 'si' : 'no';
     if (d === estado.dia) b.setAttribute('aria-current', 'true');
     else b.removeAttribute('aria-current');
+
+    b.querySelector('.riel__letra').textContent = INICIAL[d];
 
     const celda = b.querySelector('.riel__n');
     celda.textContent = n === 0 ? '–' : n;
     celda.classList.toggle('riel__cero', n === 0);
 
+    // Bajo cada celda, el número del día del mes: así se ve de un vistazo
+    // que la fila avanza en el tiempo y no es un menú de pestañas.
+    b.querySelector('.riel__cuando').textContent = proximaFecha(d).getDate();
+
+    const cuando = i === 0 ? 'hoy' : i === 1 ? 'mañana' : `en ${i} días`;
     b.setAttribute(
       'aria-label',
-      `${DIAS[d]}: ${n} ${n === 1 ? 'descuento' : 'descuentos'}${d === estado.hoy ? ', hoy' : ''}`,
+      `${DIAS[d]}, ${cuando}: ${n} ${n === 1 ? 'descuento' : 'descuentos'}`,
     );
   }
 }

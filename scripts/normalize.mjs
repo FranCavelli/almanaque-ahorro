@@ -85,6 +85,35 @@ ${text}
 --- FIN DEL TEXTO ---`;
 }
 
+/**
+ * Corta el texto en tandas cuando es muy largo, respetando los saltos de linea.
+ * Antes se truncaba en la etapa de scraping y las promos del final se perdian
+ * sin que nadie se enterara. Preferimos pagar dos llamadas antes que mentir
+ * por omision.
+ */
+const CHARS_POR_TANDA = 40000;
+
+function enTandas(text) {
+  if (text.length <= CHARS_POR_TANDA) return [text];
+
+  const tandas = [];
+  const lineas = text.split('\n');
+  let actual = [];
+  let largo = 0;
+
+  for (const l of lineas) {
+    if (largo + l.length > CHARS_POR_TANDA && actual.length) {
+      tandas.push(actual.join('\n'));
+      actual = [];
+      largo = 0;
+    }
+    actual.push(l);
+    largo += l.length + 1;
+  }
+  if (actual.length) tandas.push(actual.join('\n'));
+  return tandas;
+}
+
 async function normalizeOne(source, text) {
   const stream = client.messages.stream({
     model: MODEL,
@@ -171,12 +200,20 @@ async function main() {
     }
 
     try {
-      const { promos, usage } = await normalizeOne(source, text);
+      const tandas = enTandas(text);
+      const promos = [];
 
-      totals.in += usage.input_tokens ?? 0;
-      totals.out += usage.output_tokens ?? 0;
-      totals.cacheRead += usage.cache_read_input_tokens ?? 0;
-      totals.cacheWrite += usage.cache_creation_input_tokens ?? 0;
+      for (const [i, tanda] of tandas.entries()) {
+        const r = await normalizeOne(source, tanda);
+        promos.push(...r.promos);
+        totals.in += r.usage.input_tokens ?? 0;
+        totals.out += r.usage.output_tokens ?? 0;
+        totals.cacheRead += r.usage.cache_read_input_tokens ?? 0;
+        totals.cacheWrite += r.usage.cache_creation_input_tokens ?? 0;
+        if (tandas.length > 1) {
+          console.log(`     tanda ${i + 1}/${tandas.length}: ${r.promos.length} promos`);
+        }
+      }
 
       const enriched = promos.map((p) => ({
         ...p,

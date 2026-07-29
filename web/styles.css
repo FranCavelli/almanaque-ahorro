@@ -70,7 +70,7 @@
   --chrome-activo-bg: #F2F0EA;
   --chrome-activo-fg: #132C77;
 
-  --riel-alto: 68px;
+  --riel-alto: 76px;
   --hair: 1px;
   --tipo: 'Archivo', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
@@ -667,7 +667,15 @@ button { font: inherit; color: inherit; }
   font-stretch: 78%;
   line-height: 1;
 }
-.riel__cero { opacity: 0.4; }
+.riel__cero { opacity: 0.55; font-weight: 500; }
+
+/* Número del día del mes: deja ver que la fila avanza en el tiempo. */
+.riel__cuando {
+  font-size: var(--t-3xs);
+  font-weight: 600;
+  line-height: 1;
+  opacity: 0.6;
+}
 
 /* Los domingos van en rojo. */
 .riel__dia[data-domingo="si"] .riel__letra { color: var(--rojo); }

@@ -50,10 +50,17 @@ function htmlToText(html) {
 }
 
 /**
- * Colapsa lineas repetidas consecutivas (menus, breadcrumbs duplicados) y
- * recorta a un maximo. El texto que le mandamos al modelo se paga por token.
+ * Colapsa lineas repetidas consecutivas (menus, breadcrumbs duplicados).
+ *
+ * El limite es una red de contencion contra una pagina patologica, NO una
+ * politica de ahorro: cortar a 24k tiraba mas de la mitad de la pagina de
+ * Carrefour (56k) y con ella promos reales, en silencio. Si igual se corta,
+ * se avisa y queda registrado en el indice; la etapa 2 parte los textos
+ * largos en tandas en lugar de perderlos.
  */
-function condense(text, maxChars = 24000) {
+const LIMITE_DURO = 200000;
+
+function condense(text) {
   const out = [];
   let prev = null;
   for (const line of text.split('\n')) {
@@ -62,9 +69,11 @@ function condense(text, maxChars = 24000) {
     out.push(line);
   }
   const joined = out.join('\n');
-  return joined.length > maxChars
-    ? joined.slice(0, maxChars) + '\n\n[...truncado por longitud...]'
-    : joined;
+  if (joined.length <= LIMITE_DURO) return { texto: joined, truncado: false };
+  return {
+    texto: joined.slice(0, LIMITE_DURO) + '\n\n[...cortado por limite duro...]',
+    truncado: true,
+  };
 }
 
 async function viaFetch(source) {
@@ -165,17 +174,27 @@ async function viaBrowser(source) {
   }
 }
 
-async function scrapeOne(source) {
+async function scrapeOne(source, previo) {
   const started = Date.now();
   try {
     const { status, text: rawText } = source.mode === 'browser'
       ? await viaBrowser(source)
       : await viaFetch(source);
 
-    const text = condense(rawText);
-    const thin = text.length < THIN_THRESHOLD;
+    const { texto, truncado } = condense(rawText);
+    const thin = texto.length < THIN_THRESHOLD;
 
-    await writeFile(join(RAW_DIR, `${source.id}.txt`), text, 'utf8');
+    /**
+     * Una SPA que no llego a hidratar devuelve un shell chiquito y valido.
+     * Si eso pisa el archivo anterior, perdemos datos buenos y nadie se entera:
+     * fue exactamente lo que paso con Carrefour, que de 56k paso a 734 chars.
+     * Ante una caida brusca conservamos lo que ya teniamos.
+     */
+    const derrumbe = previo?.chars > 3000 && texto.length < previo.chars * 0.5;
+
+    if (!derrumbe) {
+      await writeFile(join(RAW_DIR, `${source.id}.txt`), texto, 'utf8');
+    }
 
     return {
       id: source.id,
@@ -183,9 +202,11 @@ async function scrapeOne(source) {
       url: source.url,
       mode: source.mode,
       status,
-      chars: text.length,
+      chars: derrumbe ? previo.chars : texto.length,
       thin,
-      ok: !thin && status >= 200 && status < 400,
+      truncado,
+      derrumbe,
+      ok: derrumbe ? true : !thin && status >= 200 && status < 400,
       ms: Date.now() - started,
       error: null,
     };
@@ -215,18 +236,30 @@ async function main() {
   }
 
   await mkdir(RAW_DIR, { recursive: true });
+
+  // Lo que sabiamos de la corrida anterior, para detectar derrumbes.
+  const indexPathPrevio = join(RAW_DIR, '_index.json');
+  const anterior = new Map(
+    (existsSync(indexPathPrevio)
+      ? JSON.parse(await readFile(indexPathPrevio, 'utf8')).fuentes ?? []
+      : []
+    ).map((f) => [f.id, f]),
+  );
+
   console.log(`Scrapeando ${targets.length} fuente(s)...\n`);
 
   const results = [];
   // De a 3 en paralelo: suficiente para no esperar de mas, sin martillar a nadie.
   for (let i = 0; i < targets.length; i += 3) {
     const batch = targets.slice(i, i + 3);
-    results.push(...(await Promise.all(batch.map(scrapeOne))));
+    results.push(...(await Promise.all(batch.map((s) => scrapeOne(s, anterior.get(s.id))))));
   }
 
   for (const r of results) {
-    const mark = r.ok ? 'OK  ' : r.error ? 'ERR ' : 'THIN';
-    const detail = r.error ?? `${r.chars} chars, HTTP ${r.status}`;
+    const mark = r.error ? 'ERR ' : r.derrumbe ? 'CAIDA' : r.ok ? 'OK  ' : 'THIN';
+    let detail = r.error ?? `${r.chars} chars, HTTP ${r.status}`;
+    if (r.derrumbe) detail += '  <- vino casi vacia, conservo lo anterior';
+    if (r.truncado) detail += '  <- CORTADO por limite duro';
     console.log(`${mark} ${r.id.padEnd(20)} ${String(r.ms + 'ms').padStart(7)}  ${detail}`);
   }
 
