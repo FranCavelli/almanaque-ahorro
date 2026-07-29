@@ -5,7 +5,7 @@
 
 /* Bumpear en cada deploy: el shell es cache-first y si no cambia la constante
    la versión vieja se queda para siempre. */
-const CACHE = 'almanaque-v2';
+const CACHE = 'almanaque-v3';
 
 const SHELL = [
   './',
